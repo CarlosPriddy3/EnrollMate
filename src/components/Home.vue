@@ -1,13 +1,16 @@
 <template>
   <div>
-    <h1>Home</h1>
-    <p>Here is some information. This is the home page</p>
+    <Listing></Listing>
   </div>
 </template>
 
 <script>
+	import Listing from './Listing'
 	export default {
-  	name: 'Home' //this is the name of the component
+  		name: 'Home',
+  		components: {
+  			'Listing': Listing
+  		}
 	}
 </script>
 
