@@ -1,5 +1,6 @@
 <template>
   <div>
+  	<!-- <Search></Search> -->
     <Listing></Listing>
   </div>
 </template>

@@ -1,19 +1,16 @@
 <template>
   <div id="app">
     <Nav></Nav>
-    <!-- <Search></Search> -->
     <router-view/>
   </div>
 </template>
 
 <script>
   import Nav from './components/Nav'
-  import Search from './components/Search'
   export default {
     name: 'app',
     components: {
-      'Nav': Nav,
-      'Search': Search
+      'Nav': Nav
     }
   }
 </script>
