@@ -13,6 +13,7 @@
       'Nav': Nav
     }
   }
+  const API_URL = 'http://localhost:8000'
 </script>
 
 <style>
