@@ -42,7 +42,7 @@
         	      	</v-expansion-panel-content>
         	      </v-expansion-panel-content>
         <v-expansion-panel-content>
-        	      	<div slot="header">{{ "Spanish" }}</div>
+        	      	<div slot="header">{{ "Space Science" }}</div>
         	      	<v-expansion-panel-content class="grey lighten-3" v-for="course in spaRef" :key="course.id">
         	      		<div slot="header">{{ course.CRS_NUMB + " " + course.TITLE + " Instructor: " + course.FIRST_NAME
         	      		           + " " + course.INSTRUCTOR + " " + course.CURRENT_ENRL + "/" + course.MAX_ENRL }}</div>
