@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import App from './App'
+import VueFire from 'vuefire'
 import router from './router'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -13,6 +14,7 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css'
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(Vuetify)
+Vue.use(VueFire)
 
 /* eslint-disable no-new */
 new Vue({
