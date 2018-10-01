@@ -5,9 +5,9 @@
     </div>-->
 		<div class="listing" style="overflow-y: scroll;">
 	    <v-expansion-panel expand>
-	      <v-expansion-panel-content>
-	      	<div slot="header">{{ "Accounting" }}</div>
-	      	<v-expansion-panel-content class="grey lighten-3" v-for="course in accRef" :key="course.id">
+	      <v-expansion-panel-content v-for="subject in subjects">
+	      	<div slot="header">{{ subject.classname }}</div>
+	      	<v-expansion-panel-content class="grey lighten-3" v-for="course in subjRefer(subject.id)" :key="course.id">
 	      		<div slot="header">{{ course.CRS_NUMB + " " + course.TITLE + " Instructor: " + course.FIRST_NAME
 	      		           + " " + course.INSTRUCTOR + " " + course.CURRENT_ENRL + "/" + course.MAX_ENRL }}</div>
 	      		           <v-card>
@@ -17,42 +17,6 @@
                                            </v-card>
 	      	</v-expansion-panel-content>
 	      </v-expansion-panel-content>
-	      <v-expansion-panel-content>
-        	      	<div slot="header">{{ "Finance" }}</div>
-        	      	<v-expansion-panel-content class="grey lighten-3" v-for="course in finRef" :key="course.id">
-        	      		<div slot="header">{{ course.CRS_NUMB + " " + course.TITLE + " Instructor: " + course.FIRST_NAME
-        	      		           + " " + course.INSTRUCTOR + " " + course.CURRENT_ENRL + "/" + course.MAX_ENRL }}</div>
-        	      		           <v-card>
-                                                   <v-card-text class="grey lighten-3"><p class="text-xs-right">Course Title: {{course.TITLE}}  CRN: {{course.CRN}}  Class Cap: {{course.MAX_ENRL}} Current Enrollment: {{course.CURRENT_ENRL}}</p></v-card-text>
-                                                   <v-card-text class="grey lighten-3"><p class="text-xs-right">Instructor: {{course.FIRST_NAME}}  {{course.MI}} {{course.INSTRUCTOR}}        Credit Hours: {{course.CREDIT_HRS}}   Day/Time: {{course.DAYS}}  {{course.START_TIME}}-{{course.END_TIME}}</p></v-card-text>
-                                                   <v-card-text class="grey lighten-3"><p class="text-xs-right">Building: {{course.BLDG}} Room: {{course.ROOM}}</p></v-card-text>
-                                                   </v-card>
-        	      	</v-expansion-panel-content>
-        	      </v-expansion-panel-content>
-        <v-expansion-panel-content>
-        	      	<div slot="header">{{ "Math" }}</div>
-        	      	<v-expansion-panel-content class="grey lighten-3" v-for="course in maRef" :key="course.id">
-        	      		<div slot="header">{{ course.CRS_NUMB + " " + course.TITLE + " Instructor: " + course.FIRST_NAME
-        	      		           + " " + course.INSTRUCTOR + " " + course.CURRENT_ENRL + "/" + course.MAX_ENRL }}</div>
-        	      		           <v-card>
-                                                   <v-card-text class="grey lighten-3"><p class="text-xs-right">Course Title: {{course.TITLE}}  CRN: {{course.CRN}}  Class Cap: {{course.MAX_ENRL}} Current Enrollment: {{course.CURRENT_ENRL}}</p></v-card-text>
-                                                   <v-card-text class="grey lighten-3"><p class="text-xs-right">Instructor: {{course.FIRST_NAME}}  {{course.MI}} {{course.INSTRUCTOR}}        Credit Hours: {{course.CREDIT_HRS}}   Day/Time: {{course.DAYS}}  {{course.START_TIME}}-{{course.END_TIME}}</p></v-card-text>
-                                                   <v-card-text class="grey lighten-3"><p class="text-xs-right">Building: {{course.BLDG}} Room: {{course.ROOM}}</p></v-card-text>
-                                                   </v-card>
-        	      	</v-expansion-panel-content>
-        	      </v-expansion-panel-content>
-        <v-expansion-panel-content>
-        	      	<div slot="header">{{ "Space Science" }}</div>
-        	      	<v-expansion-panel-content class="grey lighten-3" v-for="course in spaRef" :key="course.id">
-        	      		<div slot="header">{{ course.CRS_NUMB + " " + course.TITLE + " Instructor: " + course.FIRST_NAME
-        	      		           + " " + course.INSTRUCTOR + " " + course.CURRENT_ENRL + "/" + course.MAX_ENRL }}</div>
-        	      		<v-card>
-                    <v-card-text class="grey lighten-3"><p class="text-xs-right">Course Title: {{course.TITLE}}  CRN: {{course.CRN}}  Class Cap: {{course.MAX_ENRL}} Current Enrollment: {{course.CURRENT_ENRL}}</p></v-card-text>
-                    <v-card-text class="grey lighten-3"><p class="text-xs-right">Instructor: {{course.FIRST_NAME}}  {{course.MI}} {{course.INSTRUCTOR}}        Credit Hours: {{course.CREDIT_HRS}}   Day/Time: {{course.DAYS}}  {{course.START_TIME}}-{{course.END_TIME}}</p></v-card-text>
-                    <v-card-text class="grey lighten-3"><p class="text-xs-right">Building: {{course.BLDG}} Room: {{course.ROOM}}</p></v-card-text>
-                    </v-card>
-        	      	</v-expansion-panel-content>
-        	      </v-expansion-panel-content>
 	    </v-expansion-panel>
 	  </div>
 	</div>
@@ -71,20 +35,7 @@
 
   let firebaseApp = Firebase.initializeApp(config)
   let db = firebaseApp.database()
-	/*export default {
-			name: 'Listing',
-      data: function() {
-            return {
-                  colleges: [
-          						{   id: 'ACC - Accounting',
-          							  classes: function() {
-          							      return db.ref('/').orderByChild('COLLEGE').equalTo('SC')
-          						    }
-          						}
-          				]
-          	}
-      }
-  }*/
+
   export default {
     data () {
       return {
@@ -127,7 +78,7 @@
       }
     },
     firebase: {
-          accRef: db.ref('/').orderByChild('SUBJ').equalTo('ACC'),
+          //accRef: db.ref('/').orderByChild('SUBJ').equalTo('ACC'),
           //arhRef: db.ref('/').orderByChild('SUBJ').equalTo('ARH'),
           //arsRef: db.ref('/').orderByChild('SUBJ').equalTo('ARS'),
           //astRef: db.ref('/').orderByChild('SUBJ').equalTo('AST'),
@@ -191,16 +142,37 @@
           // vsRef: db.ref('/').orderByChild('SUBJ').equalTo('VS'),
           // wgsRef: db.ref('/').orderByChild('SUBJ').equalTo('WGS'),
           // wlcRef: db.ref('/').orderByChild('SUBJ').equalTo('WLC')
+          dbRef: db.ref('/')
 
-
-
-        }/*,
+    },
     computed: {
-          subArrs: [
-          {accRef},
-          {maRef}
-          ]
-    }*/
+        subArrs: {
+            get: function() {return [
+                function() {return this.accRef},
+                function() {return this.maRef}
+            ]}
+        },
+      	filteredColleges: function() {
+            return this.subjects.filter((college) => {
+                return college.id.toLowerCase().match(this.search.toLowerCase())
+            })
+        },
+
+    },
+
+
+    methods: {
+      	subjRefer: function(subj) {
+       		return this.dbRef.filter((singleClass) => {
+          		return singleClass.SUBJ === subj
+       		})
+      	},
+      	instrRefer: function(instructor) {
+        	return this.dbRef.filter((singleClass) => {
+          		return singleClass.SUBJ === subj
+      		})
+      	}
+    }
   }
 </script>
 
