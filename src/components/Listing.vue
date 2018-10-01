@@ -1,13 +1,14 @@
 <template>
 	<div class="root">
-    <!--<div class="search">
+    <div class="search">
       <v-text-field v-model="search" solo label="Search College..." append-icon="search"></v-text-field>
-    </div>-->
+    </div>
 		<div class="listing" style="overflow-y: scroll;">
+		<span v-html="printLog(Home.subjects)"></span>
 	    <v-expansion-panel expand>
-	      <v-expansion-panel-content v-for="subject in subjects">
+	      <v-expansion-panel-content v-for="subject in Home.subjects">
 	      	<div slot="header">{{ subject.classname }}</div>
-	      	<v-expansion-panel-content class="grey lighten-3" v-for="course in subjRefer(subject.id)" :key="course.id">
+	      	<v-expansion-panel-content class="grey lighten-3" v-for="course in firebaseApp.subjRefer(subject.id)" :key="course.id">
 	      		<div slot="header">{{ course.CRS_NUMB + " " + course.TITLE + " Instructor: " + course.FIRST_NAME
 	      		           + " " + course.INSTRUCTOR + " " + course.CURRENT_ENRL + "/" + course.MAX_ENRL }}</div>
 	      		           <v-card>
@@ -23,7 +24,8 @@
 </template>
 
 <script>
-  import Firebase from 'firebase'
+import Home from './Home'
+  /*import Firebase from 'firebase'
   let config = {
         apiKey: "AIzaSyD9Vy8LSVUVYJ1xQpsVjJeZUsoLbcax3TQ",
         authDomain: "testdatabase-575ac.firebaseapp.com",
@@ -78,72 +80,7 @@
       }
     },
     firebase: {
-          //accRef: db.ref('/').orderByChild('SUBJ').equalTo('ACC'),
-          //arhRef: db.ref('/').orderByChild('SUBJ').equalTo('ARH'),
-          //arsRef: db.ref('/').orderByChild('SUBJ').equalTo('ARS'),
-          //astRef: db.ref('/').orderByChild('SUBJ').equalTo('AST'),
-          // atsRef: db.ref('/').orderByChild('SUBJ').equalTo('ATS'),
-          // blsRef: db.ref('/').orderByChild('SUBJ').equalTo('BLS'),
-          // bseRef: db.ref('/').orderByChild('SUBJ').equalTo('BSE'),
-          // busRef: db.ref('/').orderByChild('SUBJ').equalTo('BUS'),
-          // bysRef: db.ref('/').orderByChild('SUBJ').equalTo('BYS'),
-          // ceRef: db.ref('/').orderByChild('SUBJ').equalTo('CE'),
-          // chRef: db.ref('/').orderByChild('SUBJ').equalTo('CH'),
-          // cheRef: db.ref('/').orderByChild('SUBJ').equalTo('CHE'),
-          // cmRef: db.ref('/').orderByChild('SUBJ').equalTo('CM'),
-          // cpeRef: db.ref('/').orderByChild('SUBJ').equalTo('CPE'),
-          // csRef: db.ref('/').orderByChild('SUBJ').equalTo('CS'),
-          // ecnRef: db.ref('/').orderByChild('SUBJ').equalTo('ECN'),
-          // edRef: db.ref('/').orderByChild('SUBJ').equalTo('ED'),
-          // edcRef: db.ref('/').orderByChild('SUBJ').equalTo('EDC'),
-          // eeRef: db.ref('/').orderByChild('SUBJ').equalTo('EE'),
-          // ehRef: db.ref('/').orderByChild('SUBJ').equalTo('EH'),
-          // ehlRef: db.ref('/').orderByChild('SUBJ').equalTo('EHL'),
-          // emRef: db.ref('/').orderByChild('SUBJ').equalTo('EM'),
-          // engRef: db.ref('/').orderByChild('SUBJ').equalTo('ENG'),
-          // essRef: db.ref('/').orderByChild('SUBJ').equalTo('ESS'),
-          finRef: db.ref('/').orderByChild('SUBJ').equalTo('FIN'),
-          // fyeRef: db.ref('/').orderByChild('SUBJ').equalTo('FYE'),
-          // gsRef: db.ref('/').orderByChild('SUBJ').equalTo('GS'),
-          // gyRef: db.ref('/').orderByChild('SUBJ').equalTo('GY'),
-          // honRef: db.ref('/').orderByChild('SUBJ').equalTo('HON'),
-          // hpeRef: db.ref('/').orderByChild('SUBJ').equalTo('HPE'),
-          // hyRef: db.ref('/').orderByChild('SUBJ').equalTo('HY'),
-          // ilcRef: db.ref('/').orderByChild('SUBJ').equalTo('ILC'),
-          // isRef: db.ref('/').orderByChild('SUBJ').equalTo('IS'),
-          // iseRef: db.ref('/').orderByChild('SUBJ').equalTo('ISE'),
-          // kinRef: db.ref('/').orderByChild('SUBJ').equalTo('KIN'),
-          // llpRef: db.ref('/').orderByChild('SUBJ').equalTo('LLP'),
-          maRef: db.ref('/').orderByChild('SUBJ').equalTo('MA'),
-          // maeRef: db.ref('/').orderByChild('SUBJ').equalTo('MAE'),
-          // mgtRef: db.ref('/').orderByChild('SUBJ').equalTo('MGT'),
-          // milRef: db.ref('/').orderByChild('SUBJ').equalTo('MIL'),
-          // mktRef: db.ref('/').orderByChild('SUBJ').equalTo('MKT'),
-          // mscRef: db.ref('/').orderByChild('SUBJ').equalTo('MSC'),
-          // mtsRef: db.ref('/').orderByChild('SUBJ').equalTo('MTS'),
-          // muRef: db.ref('/').orderByChild('SUBJ').equalTo('MU'),
-          // muaRef: db.ref('/').orderByChild('SUBJ').equalTo('MUA'),
-          // mujRef: db.ref('/').orderByChild('SUBJ').equalTo('MUJ'),
-          // muxRef: db.ref('/').orderByChild('SUBJ').equalTo('MUX'),
-          // nurRef: db.ref('/').orderByChild('SUBJ').equalTo('NUR'),
-          // ocsRef: db.ref('/').orderByChild('SUBJ').equalTo('OCS'),
-          // opeRef: db.ref('/').orderByChild('SUBJ').equalTo('OPE'),
-          // optRef: db.ref('/').orderByChild('SUBJ').equalTo('OPT'),
-          // oseRef: db.ref('/').orderByChild('SUBJ').equalTo('OSE'),
-          // phRef: db.ref('/').orderByChild('SUBJ').equalTo('PH'),
-          // phlRef: db.ref('/').orderByChild('SUBJ').equalTo('PHL'),
-          // proRef: db.ref('/').orderByChild('SUBJ').equalTo('PRO'),
-          // pscRef: db.ref('/').orderByChild('SUBJ').equalTo('PSC'),
-          // pyRef: db.ref('/').orderByChild('SUBJ').equalTo('PY'),
-          // socRef: db.ref('/').orderByChild('SUBJ').equalTo('SOC'),
-          spaRef: db.ref('/').orderByChild('SUBJ').equalTo('SPA'),
-          // stRef: db.ref('/').orderByChild('SUBJ').equalTo('ST'),
-          // thRef: db.ref('/').orderByChild('SUBJ').equalTo('TH'),
-          // vsRef: db.ref('/').orderByChild('SUBJ').equalTo('VS'),
-          // wgsRef: db.ref('/').orderByChild('SUBJ').equalTo('WGS'),
-          // wlcRef: db.ref('/').orderByChild('SUBJ').equalTo('WLC')
           dbRef: db.ref('/')
-
     },
     computed: {
         subArrs: {
@@ -152,11 +89,12 @@
                 function() {return this.maRef}
             ]}
         },
-      	filteredColleges: function() {
+      	filteredSubjects: function() {
             return this.subjects.filter((college) => {
                 return college.id.toLowerCase().match(this.search.toLowerCase())
             })
         },
+
 
     },
 
@@ -173,6 +111,19 @@
       		})
       	}
     }
+  }*/
+  export default {
+      components: {
+      'Home': Home
+      },
+      data () {
+        return {
+          search: ''
+        }
+      },
+      methods: {
+      printLog: function() {return console.log(this.subjects)},
+      }
   }
 </script>
 

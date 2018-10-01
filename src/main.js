@@ -16,6 +16,7 @@ Vue.use(BootstrapVue)
 Vue.use(Vuetify)
 Vue.use(VueFire)
 
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
