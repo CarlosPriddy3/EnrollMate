@@ -3,18 +3,39 @@
     <!--<div class="search">
       <v-text-field v-model="search" solo label="Search College..." append-icon="search"></v-text-field>
     </div>-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 		<div class="listing" style="overflow-y: scroll;">
 	    <v-expansion-panel expand>
 	      <v-expansion-panel-content v-for="subject in subjects">
 	      	<div slot="header">{{ subject.classname }}</div>
-	      	<v-expansion-panel-content class="grey lighten-3" v-for="course in subjRefer(subject.id)" :key="course.id">
-	      		<div slot="header">{{ course.CRS_NUMB + " " + course.TITLE + " Instructor: " + course.FIRST_NAME
-	      		           + " " + course.INSTRUCTOR + " " + course.CURRENT_ENRL + "/" + course.MAX_ENRL }}</div>
-	      		           <v-card>
-                                           <v-card-text class="grey lighten-3"><p class="text-xs-right">Course Title: {{course.TITLE}}  CRN: {{course.CRN}}  Class Cap: {{course.MAX_ENRL}} Current Enrollment: {{course.CURRENT_ENRL}}</p></v-card-text>
-                                           <v-card-text class="grey lighten-3"><p class="text-xs-right">Instructor: {{course.FIRST_NAME}}  {{course.MI}} {{course.INSTRUCTOR}}        Credit Hours: {{course.CREDIT_HRS}}   Day/Time: {{course.DAYS}}  {{course.START_TIME}}-{{course.END_TIME}}</p></v-card-text>
-                                           <v-card-text class="grey lighten-3"><p class="text-xs-right">Building: {{course.BLDG}} Room: {{course.ROOM}}</p></v-card-text>
-                                           </v-card>
+	      	<v-expansion-panel-content :class="course.CURRENT_ENRL/course.MAX_ENRL >= .85 ? 'red lighten-3' : 'grey lighten-3'" v-for="course in subjRefer(subject.id)" :key="course.id">
+	      		<div slot="header"><i class="fas fa-fire" v-if="course.CURRENT_ENRL/course.MAX_ENRL >= .85"></i> {{ course.CRS_NUMB + " - " + course.TITLE + ", " + course.FIRST_NAME + " " + course.INSTRUCTOR + " (" + course.CURRENT_ENRL + "/" + course.MAX_ENRL + ")"}}
+              </div>
+	      		  <v-card-text class="grey lighten-3">
+                <h2>{{course.TITLE}}</h2>
+                <table>
+                  <tr>
+                    <th>CRN</th>
+                    <th>Current Enrollment / Class Capacity</th>
+                    <th>Instructor</th>
+                  </tr>
+                  <tr>
+                    <td>{{course.CRN}}</td>
+                    <td>{{course.CURRENT_ENRL}} / {{course.MAX_ENRL}}</td>
+                    <td>{{course.FIRST_NAME}} {{course.MI}} {{course.INSTRUCTOR}}</td>
+                  </tr>
+                  <tr>
+                    <th>Credit Hours</th>
+                    <th>Day/Time</th>
+                    <th>Building + Room</th>
+                  </tr>
+                  <tr>
+                    <td>{{course.CREDIT_HRS}}</td>
+                    <td>{{course.DAYS}}  {{course.START_TIME}}-{{course.END_TIME}}</td>
+                    <td>{{course.BLDG}} {{course.ROOM}}</td>
+                  </tr>
+                </table>
+              </v-card-text>
 	      	</v-expansion-panel-content>
 	      </v-expansion-panel-content>
 	    </v-expansion-panel>
@@ -78,72 +99,7 @@
       }
     },
     firebase: {
-          //accRef: db.ref('/').orderByChild('SUBJ').equalTo('ACC'),
-          //arhRef: db.ref('/').orderByChild('SUBJ').equalTo('ARH'),
-          //arsRef: db.ref('/').orderByChild('SUBJ').equalTo('ARS'),
-          //astRef: db.ref('/').orderByChild('SUBJ').equalTo('AST'),
-          // atsRef: db.ref('/').orderByChild('SUBJ').equalTo('ATS'),
-          // blsRef: db.ref('/').orderByChild('SUBJ').equalTo('BLS'),
-          // bseRef: db.ref('/').orderByChild('SUBJ').equalTo('BSE'),
-          // busRef: db.ref('/').orderByChild('SUBJ').equalTo('BUS'),
-          // bysRef: db.ref('/').orderByChild('SUBJ').equalTo('BYS'),
-          // ceRef: db.ref('/').orderByChild('SUBJ').equalTo('CE'),
-          // chRef: db.ref('/').orderByChild('SUBJ').equalTo('CH'),
-          // cheRef: db.ref('/').orderByChild('SUBJ').equalTo('CHE'),
-          // cmRef: db.ref('/').orderByChild('SUBJ').equalTo('CM'),
-          // cpeRef: db.ref('/').orderByChild('SUBJ').equalTo('CPE'),
-          // csRef: db.ref('/').orderByChild('SUBJ').equalTo('CS'),
-          // ecnRef: db.ref('/').orderByChild('SUBJ').equalTo('ECN'),
-          // edRef: db.ref('/').orderByChild('SUBJ').equalTo('ED'),
-          // edcRef: db.ref('/').orderByChild('SUBJ').equalTo('EDC'),
-          // eeRef: db.ref('/').orderByChild('SUBJ').equalTo('EE'),
-          // ehRef: db.ref('/').orderByChild('SUBJ').equalTo('EH'),
-          // ehlRef: db.ref('/').orderByChild('SUBJ').equalTo('EHL'),
-          // emRef: db.ref('/').orderByChild('SUBJ').equalTo('EM'),
-          // engRef: db.ref('/').orderByChild('SUBJ').equalTo('ENG'),
-          // essRef: db.ref('/').orderByChild('SUBJ').equalTo('ESS'),
-          finRef: db.ref('/').orderByChild('SUBJ').equalTo('FIN'),
-          // fyeRef: db.ref('/').orderByChild('SUBJ').equalTo('FYE'),
-          // gsRef: db.ref('/').orderByChild('SUBJ').equalTo('GS'),
-          // gyRef: db.ref('/').orderByChild('SUBJ').equalTo('GY'),
-          // honRef: db.ref('/').orderByChild('SUBJ').equalTo('HON'),
-          // hpeRef: db.ref('/').orderByChild('SUBJ').equalTo('HPE'),
-          // hyRef: db.ref('/').orderByChild('SUBJ').equalTo('HY'),
-          // ilcRef: db.ref('/').orderByChild('SUBJ').equalTo('ILC'),
-          // isRef: db.ref('/').orderByChild('SUBJ').equalTo('IS'),
-          // iseRef: db.ref('/').orderByChild('SUBJ').equalTo('ISE'),
-          // kinRef: db.ref('/').orderByChild('SUBJ').equalTo('KIN'),
-          // llpRef: db.ref('/').orderByChild('SUBJ').equalTo('LLP'),
-          maRef: db.ref('/').orderByChild('SUBJ').equalTo('MA'),
-          // maeRef: db.ref('/').orderByChild('SUBJ').equalTo('MAE'),
-          // mgtRef: db.ref('/').orderByChild('SUBJ').equalTo('MGT'),
-          // milRef: db.ref('/').orderByChild('SUBJ').equalTo('MIL'),
-          // mktRef: db.ref('/').orderByChild('SUBJ').equalTo('MKT'),
-          // mscRef: db.ref('/').orderByChild('SUBJ').equalTo('MSC'),
-          // mtsRef: db.ref('/').orderByChild('SUBJ').equalTo('MTS'),
-          // muRef: db.ref('/').orderByChild('SUBJ').equalTo('MU'),
-          // muaRef: db.ref('/').orderByChild('SUBJ').equalTo('MUA'),
-          // mujRef: db.ref('/').orderByChild('SUBJ').equalTo('MUJ'),
-          // muxRef: db.ref('/').orderByChild('SUBJ').equalTo('MUX'),
-          // nurRef: db.ref('/').orderByChild('SUBJ').equalTo('NUR'),
-          // ocsRef: db.ref('/').orderByChild('SUBJ').equalTo('OCS'),
-          // opeRef: db.ref('/').orderByChild('SUBJ').equalTo('OPE'),
-          // optRef: db.ref('/').orderByChild('SUBJ').equalTo('OPT'),
-          // oseRef: db.ref('/').orderByChild('SUBJ').equalTo('OSE'),
-          // phRef: db.ref('/').orderByChild('SUBJ').equalTo('PH'),
-          // phlRef: db.ref('/').orderByChild('SUBJ').equalTo('PHL'),
-          // proRef: db.ref('/').orderByChild('SUBJ').equalTo('PRO'),
-          // pscRef: db.ref('/').orderByChild('SUBJ').equalTo('PSC'),
-          // pyRef: db.ref('/').orderByChild('SUBJ').equalTo('PY'),
-          // socRef: db.ref('/').orderByChild('SUBJ').equalTo('SOC'),
-          spaRef: db.ref('/').orderByChild('SUBJ').equalTo('SPA'),
-          // stRef: db.ref('/').orderByChild('SUBJ').equalTo('ST'),
-          // thRef: db.ref('/').orderByChild('SUBJ').equalTo('TH'),
-          // vsRef: db.ref('/').orderByChild('SUBJ').equalTo('VS'),
-          // wgsRef: db.ref('/').orderByChild('SUBJ').equalTo('WGS'),
-          // wlcRef: db.ref('/').orderByChild('SUBJ').equalTo('WLC')
           dbRef: db.ref('/')
-
     },
     computed: {
         subArrs: {
@@ -191,4 +147,10 @@
       margin-top: 25px;
       width:500px;
     }
+  td, th {
+      padding-right: 10px;
+  }
+  td {
+    padding-bottom: 15px;
+  }
 </style>
