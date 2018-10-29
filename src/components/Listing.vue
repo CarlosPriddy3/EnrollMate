@@ -8,7 +8,7 @@
 	    <v-expansion-panel expand>
 	      <v-expansion-panel-content v-for="subject in subjects">
 	      	<div slot="header">{{ subject.classname }}</div>
-	      	<v-expansion-panel-content :class="course.CURRENT_ENRL/course.MAX_ENRL >= .85 ? 'red lighten-3' : 'grey lighten-3'" v-for="course in subjRefer(subject.id)" :key="course.id">
+	      	<v-expansion-panel-content :class="course.CURRENT_ENRL/course.MAX_ENRL >= .85 ? 'red lighten-3' : 'grey lighten-3'" v-for="course in filterList(filteredList, 'SUBJ', subject.id)" :key="course.id">
 	      		<div slot="header"><i class="fas fa-fire" v-if="course.CURRENT_ENRL/course.MAX_ENRL >= .85"></i> {{ course.CRS_NUMB + " - " + course.TITLE + ", " + course.FIRST_NAME + " " + course.INSTRUCTOR + " (" + course.CURRENT_ENRL + "/" + course.MAX_ENRL + ")"}}
               </div>
 	      		  <v-card-text class="grey lighten-3">
@@ -58,6 +58,9 @@
   let db = firebaseApp.database()
 
   export default {
+    firebase: {
+              dbRef: db.ref('/')
+    },
     data () {
       return {
         search: '',
@@ -98,25 +101,23 @@
         ]
       }
     },
-    firebase: {
-          dbRef: db.ref('/')
-    },
+
     computed: {
         subArrs: {
             get: function() {return [
                 function() {return this.accRef},
-                function() {return this.maRef}
+                function() {return this.maRef},
             ]}
         },
-      	filteredColleges: function() {
+      	filteredSubjects: function() {
             return this.subjects.filter((college) => {
                 return college.id.toLowerCase().match(this.search.toLowerCase())
             })
         },
-
+        filteredList: function() {
+            return this.dbRef
+        }
     },
-
-
     methods: {
       	subjRefer: function(subj) {
        		return this.dbRef.filter((singleClass) => {
@@ -125,8 +126,27 @@
       	},
       	instrRefer: function(instructor) {
         	return this.dbRef.filter((singleClass) => {
-          		return singleClass.SUBJ === subj
+          		return singleClass.INSTRUCTOR === instructor
       		})
+      	},
+      	//searchTerms will be an objectLiteral maybe? Looks like {DAYS: MWF, INSTRUCTOR: Waddell}
+      	filterBySearch: function(searchTerms) {
+      	  //For each search term, filter our list
+      	  filteredList = this.dbRef.slice()
+      	  for (var key in Object.keys(searchTerms)) {
+      	      filteredList = filterList(filteredList.slice(), key, searchTerms[key]) //key should be 'MWF'
+      	  }
+      	},
+      	filterList: function(listToFilter, filterByType, filterByVal) {
+          var newList = []
+          for (var key in Object.keys(listToFilter)) {
+            if (listToFilter[key][filterByType].toLowerCase().match(filterByVal.toLowerCase())) {
+              newList.push(listToFilter[key])
+            }
+          }
+          console.log("LIST FOR " + filterByVal)
+          console.log(newList)
+          return newList
       	}
     }
   }
