@@ -1,17 +1,17 @@
 <template>
 	<div class="root">
-    <!--<div class="search">
+    <!-- <div class="search">
       <v-text-field v-model="search" solo label="Search College..." append-icon="search"></v-text-field>
-    </div>-->
+    </div> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 		<div class="listing" style="overflow-y: scroll;">
 	    <v-expansion-panel expand>
 	      <v-expansion-panel-content v-for="subject in subjects">
 	      	<div slot="header">{{ subject.classname }}</div>
-	      	<v-expansion-panel-content :class="course.CURRENT_ENRL/course.MAX_ENRL >= .85 ? 'red lighten-3' : 'grey lighten-3'" v-for="course in filterList(filteredList, 'SUBJ', subject.id)" :key="course.id">
-	      		<div slot="header"><i class="fas fa-fire" v-if="course.CURRENT_ENRL/course.MAX_ENRL >= .85"></i> {{ course.CRS_NUMB + " - " + course.TITLE + ", " + course.FIRST_NAME + " " + course.INSTRUCTOR + " (" + course.CURRENT_ENRL + "/" + course.MAX_ENRL + ")"}}
+	      	<v-expansion-panel-content :class="course.CURRENT_ENRL/course.MAX_ENRL >= .85 ? 'red lighten-4' : 'grey lighten-3'" v-for="course in filterList(filteredList, 'SUBJ', subject.id)" :key="course.id">
+	      		<div slot="header"><i class="fas fa-fire" v-if="course.CURRENT_ENRL/course.MAX_ENRL >= .85" style="color: #FF5722;"></i>  {{ course.CRS_NUMB + " - " + course.TITLE + ", " + course.FIRST_NAME + " " + course.INSTRUCTOR + " (" + course.CURRENT_ENRL + "/" + course.MAX_ENRL + ")"}}
               </div>
-	      		  <v-card-text class="grey lighten-3">
+	      		  <v-card-text class="grey lighten-5">
                 <h2>{{course.TITLE}}</h2>
                 <table>
                   <tr>
