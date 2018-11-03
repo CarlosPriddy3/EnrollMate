@@ -56,7 +56,7 @@
 
   let firebaseApp = Firebase.initializeApp(config)
   let db = firebaseApp.database()
-
+  import HashSet from 'hashset'
   export default {
     firebase: {
               dbRef: db.ref('/')
@@ -103,33 +103,24 @@
     },
 
     computed: {
-        subArrs: {
-            get: function() {return [
-                function() {return this.accRef},
-                function() {return this.maRef},
-            ]}
-        },
-      	filteredSubjects: function() {
-            return this.subjects.filter((college) => {
-                return college.id.toLowerCase().match(this.search.toLowerCase())
-            })
-        },
+        // List of classes - Default 0 filters
         filteredList: function() {
             return this.dbRef
+        },
+        // List of Alphabetically Sorted professors
+        professorList: function() {
+            var profSet = new HashSet();
+            var dbRef = this.dbRef.slice();
+            for (var key in Object.keys(dbRef)) {
+              console.log(dbRef[key].INSTRUCTOR);
+              profSet.add("" + dbRef[key].INSTRUCTOR + ", " + dbRef[key].FIRST_NAME);
+            }
+            return profSet.toArray().sort();
         }
     },
     methods: {
-      	subjRefer: function(subj) {
-       		return this.dbRef.filter((singleClass) => {
-          		return singleClass.SUBJ === subj
-       		})
-      	},
-      	instrRefer: function(instructor) {
-        	return this.dbRef.filter((singleClass) => {
-          		return singleClass.INSTRUCTOR === instructor
-      		})
-      	},
-      	//searchTerms will be an objectLiteral maybe? Looks like {DAYS: MWF, INSTRUCTOR: Waddell}
+        //Filters the filteredList by given searchterms in the following format:
+      	//ObjectLiteral format: {DAYS: {filter0: "MWF", filter1: "TR"}, INSTRUCTOR: {filter0: "Waddell, Emmanuel"} }
       	filterBySearch: function(searchTerms) {
       	  //For each search term, filter our list
       	  filteredList = this.dbRef.slice()
@@ -137,6 +128,7 @@
       	      filteredList = filterList(filteredList.slice(), key, searchTerms[key]) //key should be 'MWF'
       	  }
       	},
+      	//Takes any list and any HEADER in the CSV file as a filterType and filters by value
       	filterList: function(listToFilter, filterByType, filterByVal) {
           var newList = []
           for (var key in Object.keys(listToFilter)) {
@@ -144,8 +136,6 @@
               newList.push(listToFilter[key])
             }
           }
-          console.log("LIST FOR " + filterByVal)
-          console.log(newList)
           return newList
       	}
     }
