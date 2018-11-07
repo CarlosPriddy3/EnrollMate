@@ -36,80 +36,64 @@
                   </tr>
                 </table>
                 <figure>
-                  <svg class="chart" width="400" height="320">
+
+                  <svg class="chart" width="450" height="320">
                   <g transform="scale(1, -1) translate(1, -280)">
-                      <rect width="50" :height="Math.round(((course.CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4)" fill="royalblue"></rect>
-                      <rect width="50" :height="course.MAX_ENRL * 4"
-                        style="stroke: #000000;
-                        stroke-width: 1;
-                        fill: none;
-                        ">
-                      </rect>
-                      <!--<text y="280" x="17.5" dy=".35em" fill="white" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">eval("{{course.CURRENT_ENRL}} * 4")</text>-->
+                      <rect width="50" :height="randomValues[Object.values(course)[22]][0] * 4" fill="royalblue"></rect>
+                      <text y="280" x="30" dy=".35em" fill="black" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">{{randomValues[course[".key"]][0]}}</text>
                       <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Spring</text>
                       <text y="320" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">2017</text>
                     </g>
                     <g transform="scale(1, -1) translate(61, -280)">
-                      <rect width="50" :height="Math.round(((course.CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4)" fill="royalblue"></rect>
-                      <rect width="50" :height="course.MAX_ENRL * 4"
-                        style="stroke: #000000;
-                        stroke-width: 1;
-                        fill: none;
-                        ">
-                      </rect>
-                      <!--<text y="280" x="14.5" dy=".35em" fill="white" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">8</text>-->
+                      <rect width="50" :height="randomValues[Object.values(course)[22]][1] * 4" fill="royalblue"></rect>
+                      <text y="280" x="30" dy=".35em" fill="black" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">{{randomValues[course[".key"]][1]}}</text>
                       <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Summer</text>
                       <text y="320" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">2017</text>
                     </g>
                     <g transform="scale(1, -1) translate(121, -280)">
-                      <rect width="50" :height="Math.round(((course.CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4)" fill="royalblue"></rect>
-                      <rect width="50" :height="course.MAX_ENRL * 4"
-                        style="stroke: #000000;
-                        stroke-width: 1;
-                        fill: none;
-                        ">
-                      </rect>
-                      <!--<text y="280" x="17" dy=".35em" fill="white" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">15</text>-->
+                      <rect width="50" :height="randomValues[Object.values(course)[22]][2] * 4" fill="royalblue"></rect>
+                      <text y="280" x="30" dy=".35em" fill="black" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">{{randomValues[course[".key"]][2]}}</text>
                       <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Fall</text>
                       <text y="320" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">2017</text>
                     </g>
                     <g transform="scale(1, -1) translate(181, -280)">
-                      <rect width="50" :height="Math.round(((course.CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4)" fill="royalblue"></rect>
-                      <rect width="50" :height="course.MAX_ENRL * 4"
-                        style="stroke: #000000;
-                        stroke-width: 1;
-                        fill: none;
-                        ">
-                      </rect>
-                      <!--<text y="280" x="18" dy=".35em" fill="white" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">16</text>-->
+                      <rect width="50" :height="randomValues[Object.values(course)[22]][3] * 4" fill="royalblue"></rect>
+                      <text y="280" x="30" dy=".35em" fill="black" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">{{randomValues[course[".key"]][3]}}</text>
                       <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Spring</text>
                       <text y="320" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">2018</text>
                     </g>
                     <g transform="scale(1, -1) translate(241, -280)">
-                      <rect width="50" :height="Math.round(((course.CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4)" fill="royalblue"></rect>
-                      <rect width="50" :height="course.MAX_ENRL * 4"
-                        style="stroke: #000000;
-                        stroke-width: 1;
-                        fill: none;
-                        ">
-                      </rect>
-                      <!--<text y="280" x="20" dy=".35em" fill="black" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">23</text>-->
+                      <rect width="50" :height="randomValues[Object.values(course)[22]][4] * 4" fill="royalblue"></rect>
+                      <text y="280" x="30" dy=".35em" fill="black" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">{{randomValues[course[".key"]][4]}}</text>
                       <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Summer</text>
                       <text y="320" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">2018</text>
                     </g>
                     <g transform="scale(1, -1) translate(301, -280)">
                       <rect width="50" :height="course.CURRENT_ENRL * 4" fill="gold"></rect>
                       <rect width="50" :height="course.MAX_ENRL * 4"
-                        style="stroke: #000000;
+                        style="stroke: #ff0000;
                         stroke-width: 1;
                         fill: none;
                         ">
                       </rect>
-                      <text y="280" x="21" dy=".35em" fill="white" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">{{course.CURRENT_ENRL}}</text>
+                      <text y="280" x="30" dy=".35em" fill="black" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">{{course.CURRENT_ENRL}}</text>
                       <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Fall</text>
                       <text y="320" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">2018</text>
                     </g>
+                    <g transform="scale(1, -1) translate(361, -280)">
+                      <rect width="50" :height="course.CURRENT_WAITLIST * 4" fill="green"></rect>
+                      <rect width="50" :height="course.WAIT_LIST_CAPACITY * 4"
+                        style="stroke: #ff0000;
+                        stroke-width: 1;
+                        fill: none;
+                        ">
+                      </rect>
+                      <text y="280" x="30" dy=".35em" fill="black" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">{{course.CURRENT_WAITLIST}}</text>
+                      <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Current</text>
+                      <text y="320" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">WaitList</text>
+                    </g>
                   </svg>
+                  <figcaption>Enrollment By Semester</figcaption>
                 </figure>
               </v-card-text>
 	      	</v-expansion-panel-content>
@@ -140,6 +124,7 @@
     },
     data () {
       return {
+        randomNumber: 0,
         search: '',
         instructor: '',
         subjects: [
@@ -197,15 +182,18 @@
         randomValues: function() {
                     var randomValues = {};
                     var dbRef = this.dbRef.slice();
-                    for (var key in Object.keys(dbRef)) {
-                      randomValues[dbRef[key]] = new Array(
-                      Math.round(((dbRef[key].CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4),
-                      Math.round(((dbRef[key].CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4),
-                      Math.round(((dbRef[key].CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4),
-                      Math.round(((dbRef[key].CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4),
-                      Math.round(((dbRef[key].CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4));
+                    for (var item in dbRef) {
+                      console.log(item);
+                      randomValues[item] = new Array(
+                      Math.round(((dbRef[item].CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8))),
+                      Math.round(((dbRef[item].CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8))),
+                      Math.round(((dbRef[item].CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8))),
+                      Math.round(((dbRef[item].CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8))),
+                      Math.round(((dbRef[item].CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8))));
                     }
+                    console.log(randomValues)
                     return randomValues;
+
                 }
     },
     methods: {
@@ -234,9 +222,22 @@
               newList.push(listToFilter[key])
             }
           }
+          /*
           console.log("LIST FOR " + filterByVal)
-          console.log(newList)
+          console.log(newList)*/
           return newList
+      	},
+
+      	createRandomNumber: function(value) {
+      	  //console.log("IN CREATE RANDOM NUMBER");
+      	  this.randomNumber = Math.round(((value) * (Math.random() * (1.2 - .8) + .8)) * 4);
+      	  //console.log(this.randomNumber);
+      	},
+
+      	getRandomNumber: function() {
+      	  //console.log("IN GET RANDOM NUMBER");
+      	  //console.log(this.randomNumber);
+      	  return this.randomNumber;
       	}
     }
   }
