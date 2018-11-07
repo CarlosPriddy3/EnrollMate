@@ -68,7 +68,7 @@
                       <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Summer</text>
                       <text y="320" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">2018</text>
                     </g>
-                    <g transform="scale(1, -1) translate(301, -280)">
+                    <g transform="scale(1, -1) translate(301, -450)">
                       <rect width="50" :height="course.CURRENT_ENRL * 4" fill="gold"></rect>
                       <rect width="50" :height="course.MAX_ENRL * 4"
                         style="stroke: #ff0000;
