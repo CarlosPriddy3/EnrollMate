@@ -39,7 +39,7 @@
                   <svg class="chart" width="400" height="320">
                   <g transform="scale(1, -1) translate(1, -280)">
                       <rect width="50" :height="Math.round(((course.CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4)" fill="royalblue"></rect>
-                      <rect width="50" :height="course.MAX_ENRL * 4" 
+                      <rect width="50" :height="course.MAX_ENRL * 4"
                         style="stroke: #000000;
                         stroke-width: 1;
                         fill: none;
@@ -51,7 +51,7 @@
                     </g>
                     <g transform="scale(1, -1) translate(61, -280)">
                       <rect width="50" :height="Math.round(((course.CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4)" fill="royalblue"></rect>
-                      <rect width="50" :height="course.MAX_ENRL * 4" 
+                      <rect width="50" :height="course.MAX_ENRL * 4"
                         style="stroke: #000000;
                         stroke-width: 1;
                         fill: none;
@@ -63,7 +63,7 @@
                     </g>
                     <g transform="scale(1, -1) translate(121, -280)">
                       <rect width="50" :height="Math.round(((course.CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4)" fill="royalblue"></rect>
-                      <rect width="50" :height="course.MAX_ENRL * 4" 
+                      <rect width="50" :height="course.MAX_ENRL * 4"
                         style="stroke: #000000;
                         stroke-width: 1;
                         fill: none;
@@ -75,7 +75,7 @@
                     </g>
                     <g transform="scale(1, -1) translate(181, -280)">
                       <rect width="50" :height="Math.round(((course.CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4)" fill="royalblue"></rect>
-                      <rect width="50" :height="course.MAX_ENRL * 4" 
+                      <rect width="50" :height="course.MAX_ENRL * 4"
                         style="stroke: #000000;
                         stroke-width: 1;
                         fill: none;
@@ -87,7 +87,7 @@
                     </g>
                     <g transform="scale(1, -1) translate(241, -280)">
                       <rect width="50" :height="Math.round(((course.CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4)" fill="royalblue"></rect>
-                      <rect width="50" :height="course.MAX_ENRL * 4" 
+                      <rect width="50" :height="course.MAX_ENRL * 4"
                         style="stroke: #000000;
                         stroke-width: 1;
                         fill: none;
@@ -99,7 +99,7 @@
                     </g>
                     <g transform="scale(1, -1) translate(301, -280)">
                       <rect width="50" :height="course.CURRENT_ENRL * 4" fill="gold"></rect>
-                      <rect width="50" :height="course.MAX_ENRL * 4" 
+                      <rect width="50" :height="course.MAX_ENRL * 4"
                         style="stroke: #000000;
                         stroke-width: 1;
                         fill: none;
@@ -193,7 +193,20 @@
         },
         filteredList: function() {
             return this.dbRef
-        }
+        },
+        randomValues: function() {
+                    var randomValues = {};
+                    var dbRef = this.dbRef.slice();
+                    for (var key in Object.keys(dbRef)) {
+                      randomValues[dbRef[key]] = new Array(
+                      Math.round(((dbRef[key].CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4),
+                      Math.round(((dbRef[key].CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4),
+                      Math.round(((dbRef[key].CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4),
+                      Math.round(((dbRef[key].CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4),
+                      Math.round(((dbRef[key].CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4));
+                    }
+                    return randomValues;
+                }
     },
     methods: {
       	subjRefer: function(subj) {
