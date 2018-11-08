@@ -37,14 +37,14 @@
                 </table>
                 <figure>
 
-                  <svg class="chart" width="450" height="320">
-                  <g transform="scale(1, -1) translate(1, -280)">
+                  <svg class="chart" width="450" height="500">
+                  <g transform="scale(1, -1) translate(1, -450)">
                       <rect width="50" :height="randomValues[Object.values(course)[22]][0] * 4" fill="royalblue"></rect>
                       <text y="280" x="30" dy=".35em" fill="black" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">{{randomValues[course[".key"]][0]}}</text>
                       <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Spring</text>
                       <text y="320" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">2017</text>
                     </g>
-                    <g transform="scale(1, -1) translate(61, -280)">
+                    <g transform="scale(1, -1) translate(61, -450)">
                       <rect width="50" :height="randomValues[Object.values(course)[22]][1] * 4" fill="royalblue"></rect>
                       <text y="280" x="30" dy=".35em" fill="black" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">{{randomValues[course[".key"]][1]}}</text>
                       <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Summer</text>
@@ -56,13 +56,13 @@
                       <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Fall</text>
                       <text y="320" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">2017</text>
                     </g>
-                    <g transform="scale(1, -1) translate(181, -280)">
+                    <g transform="scale(1, -1) translate(181, -450)">
                       <rect width="50" :height="randomValues[Object.values(course)[22]][3] * 4" fill="royalblue"></rect>
                       <text y="280" x="30" dy=".35em" fill="black" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">{{randomValues[course[".key"]][3]}}</text>
                       <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Spring</text>
                       <text y="320" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">2018</text>
                     </g>
-                    <g transform="scale(1, -1) translate(241, -280)">
+                    <g transform="scale(1, -1) translate(241, -450)">
                       <rect width="50" :height="randomValues[Object.values(course)[22]][4] * 4" fill="royalblue"></rect>
                       <text y="280" x="30" dy=".35em" fill="black" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">{{randomValues[course[".key"]][4]}}</text>
                       <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Summer</text>
@@ -80,7 +80,7 @@
                       <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Fall</text>
                       <text y="320" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">2018</text>
                     </g>
-                    <g transform="scale(1, -1) translate(361, -280)">
+                    <g transform="scale(1, -1) translate(361, -450)">
                       <rect width="50" :height="course.CURRENT_WAITLIST * 4" fill="green"></rect>
                       <rect width="50" :height="course.WAIT_LIST_CAPACITY * 4"
                         style="stroke: #ff0000;
