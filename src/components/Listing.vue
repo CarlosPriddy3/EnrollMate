@@ -50,7 +50,7 @@
                       <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Summer</text>
                       <text y="320" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">2017</text>
                     </g>
-                    <g transform="scale(1, -1) translate(121, -280)">
+                    <g transform="scale(1, -1) translate(121, -450)">
                       <rect width="50" :height="randomValues[Object.values(course)[22]][2] * 4" fill="royalblue"></rect>
                       <text y="280" x="30" dy=".35em" fill="black" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">{{randomValues[course[".key"]][2]}}</text>
                       <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Fall</text>
