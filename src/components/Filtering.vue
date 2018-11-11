@@ -70,6 +70,7 @@
         },
         methods: {
             emitGlobalClickEvent() {
+                console.log('this method was called');
                 var i;
                 var j;
                 for (i = 0; i < this.checkedDays.length; i++) {
@@ -80,7 +81,7 @@
                 this.allFilters.push(this.days);
                 this.allFilters.push(this.searchResult);
 
-                EventBus.$emit('filters', this.allFilters)
+                EventBus.$emit('filtersSelected', this.allFilters);
             }
         }
     }

@@ -144,7 +144,8 @@
   };
 
   EventBus.$on('filtersSelected', allFilters => {
-    console.log('Success. These filters will be applied: ${allFilters}')
+    console.log(allFilters);
+    this.filterBySearch(allFilters);
   });
 
 </script>
