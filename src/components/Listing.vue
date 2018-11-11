@@ -3,6 +3,7 @@
     <!-- <div class="search">
       <v-text-field v-model="search" solo label="Search College..." append-icon="search"></v-text-field>
     </div> -->
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 		<div class="listing" style="overflow-y: scroll;">
 	    <v-expansion-panel expand>
@@ -44,6 +45,7 @@
 </template>
 
 <script>
+  import { EventBus } from './event-bus.js';
   import Firebase from 'firebase'
   let config = {
         apiKey: "AIzaSyD9Vy8LSVUVYJ1xQpsVjJeZUsoLbcax3TQ",
@@ -139,11 +141,16 @@
           return newList
       	}
     }
-  }
+  };
+
+  EventBus.$on('filtersSelected', allFilters => {
+    console.log('Success. These filters will be applied: ${allFilters}')
+  });
+
 </script>
 
 <style>
-	.listing {
+  .listing {
 		margin:75px;
 		margin-bottom: -75px;
 		text-align: center;
@@ -151,12 +158,6 @@
 		height: 825px;
 		box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 	}
-	.search {
-      margin-left: 75px;
-      margin-bottom: -75px;
-      margin-top: 25px;
-      width:500px;
-    }
   td, th {
       padding-right: 10px;
   }
