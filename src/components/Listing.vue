@@ -35,6 +35,82 @@
                     <td>{{course.BLDG}} {{course.ROOM}}</td>
                   </tr>
                 </table>
+                <figure>
+                  <svg class="chart" width="400" height="320">
+                  <g transform="scale(1, -1) translate(1, -280)">
+                      <rect width="50" :height="Math.round(((course.CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4)" fill="royalblue"></rect>
+                      <rect width="50" :height="course.MAX_ENRL * 4" 
+                        style="stroke: #000000;
+                        stroke-width: 1;
+                        fill: none;
+                        ">
+                      </rect>
+                      <!--<text y="280" x="17.5" dy=".35em" fill="white" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">eval("{{course.CURRENT_ENRL}} * 4")</text>-->
+                      <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Spring</text>
+                      <text y="320" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">2017</text>
+                    </g>
+                    <g transform="scale(1, -1) translate(61, -280)">
+                      <rect width="50" :height="Math.round(((course.CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4)" fill="royalblue"></rect>
+                      <rect width="50" :height="course.MAX_ENRL * 4" 
+                        style="stroke: #000000;
+                        stroke-width: 1;
+                        fill: none;
+                        ">
+                      </rect>
+                      <!--<text y="280" x="14.5" dy=".35em" fill="white" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">8</text>-->
+                      <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Summer</text>
+                      <text y="320" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">2017</text>
+                    </g>
+                    <g transform="scale(1, -1) translate(121, -280)">
+                      <rect width="50" :height="Math.round(((course.CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4)" fill="royalblue"></rect>
+                      <rect width="50" :height="course.MAX_ENRL * 4" 
+                        style="stroke: #000000;
+                        stroke-width: 1;
+                        fill: none;
+                        ">
+                      </rect>
+                      <!--<text y="280" x="17" dy=".35em" fill="white" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">15</text>-->
+                      <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Fall</text>
+                      <text y="320" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">2017</text>
+                    </g>
+                    <g transform="scale(1, -1) translate(181, -280)">
+                      <rect width="50" :height="Math.round(((course.CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4)" fill="royalblue"></rect>
+                      <rect width="50" :height="course.MAX_ENRL * 4" 
+                        style="stroke: #000000;
+                        stroke-width: 1;
+                        fill: none;
+                        ">
+                      </rect>
+                      <!--<text y="280" x="18" dy=".35em" fill="white" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">16</text>-->
+                      <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Spring</text>
+                      <text y="320" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">2018</text>
+                    </g>
+                    <g transform="scale(1, -1) translate(241, -280)">
+                      <rect width="50" :height="Math.round(((course.CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8)) * 4)" fill="royalblue"></rect>
+                      <rect width="50" :height="course.MAX_ENRL * 4" 
+                        style="stroke: #000000;
+                        stroke-width: 1;
+                        fill: none;
+                        ">
+                      </rect>
+                      <!--<text y="280" x="20" dy=".35em" fill="black" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">23</text>-->
+                      <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Summer</text>
+                      <text y="320" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">2018</text>
+                    </g>
+                    <g transform="scale(1, -1) translate(301, -280)">
+                      <rect width="50" :height="course.CURRENT_ENRL * 4" fill="gold"></rect>
+                      <rect width="50" :height="course.MAX_ENRL * 4" 
+                        style="stroke: #000000;
+                        stroke-width: 1;
+                        fill: none;
+                        ">
+                      </rect>
+                      <text y="280" x="21" dy=".35em" fill="white" font="10px sans-serif" text-anchor="end" transform="scale(1, -1) translate(1, -300)">{{course.CURRENT_ENRL}}</text>
+                      <text y="307" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">Fall</text>
+                      <text y="320" x="-2" dy=".35em" fill="black" font="10px sans-serif" transform="scale(1, -1) translate(1, -300)">2018</text>
+                    </g>
+                  </svg>
+                </figure>
               </v-card-text>
 	      	</v-expansion-panel-content>
 	      </v-expansion-panel-content>
@@ -43,6 +119,7 @@
 	</div>
 </template>
 
+<script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
   import Firebase from 'firebase'
   let config = {
