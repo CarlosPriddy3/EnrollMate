@@ -227,7 +227,11 @@
         /*filteredList: {
           get: function() {
             return this.dbRef
-        },
+          },
+          set: function (newVal) {
+          this.filteredList = newVal;
+          }
+        },*/
         randomValues: function() {
                     var randomValues = {};
                     var dbRef = this.dbRef.slice();
@@ -245,7 +249,7 @@
 
                 }
         // List of Alphabetically Sorted professors
-        professorList: function() {
+        /*professorList: function() {
             var profSet = new HashSet();
             var dbRef = this.dbRef.slice();
             for (var key in Object.keys(dbRef)) {
@@ -253,7 +257,7 @@
               profSet.add("" + dbRef[key].INSTRUCTOR + ", " + dbRef[key].FIRST_NAME);
             }
             return profSet.toArray().sort();
-        }
+        }*/
     },
     methods: {
         //Filters the filteredList by given searchterms in the following format:
