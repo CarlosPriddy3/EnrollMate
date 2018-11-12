@@ -1,9 +1,12 @@
 <template>
+
 	<div class="root">
     <!-- <div class="search">
       <v-text-field v-model="search" solo label="Search College..." append-icon="search"></v-text-field>
     </div> -->
-
+    <div class="filtering">
+         <Filtering @clicked="onClickChild"></Filtering>
+    </div>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 		<div class="listing" style="overflow-y: scroll;">
     <div>
@@ -45,11 +48,13 @@
 	    </v-expansion-panel>
 	  </div>
 	</div>
+
 </template>
 
 <script>
   import { EventBus } from './event-bus.js';
   import Firebase from 'firebase'
+  import Filtering from './Filtering'
   let config = {
         apiKey: "AIzaSyD9Vy8LSVUVYJ1xQpsVjJeZUsoLbcax3TQ",
         authDomain: "testdatabase-575ac.firebaseapp.com",
@@ -65,6 +70,9 @@
   export default {
     firebase: {
               dbRef: db.ref('/')
+    },
+    components: {
+      'Filtering': Filtering
     },
     data () {
       return {
@@ -110,7 +118,7 @@
 
     mounted() {
       EventBus.$on('filtersSelected', allFilters => {
-        this.selectedFilters = allFilters;
+        Listing.filterBySearch()
       });
     },
 
@@ -135,10 +143,13 @@
       	//ObjectLiteral format: {DAYS: {filter0: "MWF", filter1: "TR"}, INSTRUCTOR: {filter0: "Waddell, Emmanuel"} }
       	filterBySearch: function(searchTerms) {
       	  //For each search term, filter our list
-      	  filteredList = this.dbRef.slice()
+      	  console.log("FILTERING");
+      	  console.log(searchTerms);
+      	  var tempList = this.dbRef.slice()
       	  for (var key in Object.keys(searchTerms)) {
-      	      filteredList = filterList(filteredList.slice(), key, searchTerms[key]) //key should be 'MWF'
+      	      tempList = this.filterList(tempList.slice(), key, searchTerms[key]) //key should be 'MWF'
       	  }
+      	  this.filteredList = tempList;
       	},
       	//Takes any list and any HEADER in the CSV file as a filterType and filters by value
       	filterList: function(listToFilter, filterByType, filterByVal) {
@@ -149,7 +160,10 @@
             }
           }
           return newList
-      	}
+      	},
+      	onClickChild (value) {
+          this.filterBySearch(value);
+        }
     }
   };
 

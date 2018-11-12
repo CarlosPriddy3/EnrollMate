@@ -47,7 +47,7 @@
         <div class="submit" id="submit_button">
             <button class="submit_botton" v-on:click="emitGlobalClickEvent()">See Results</button>
         </div>
-            
+
         </div>
     </div>
 </template>
@@ -71,17 +71,18 @@
         methods: {
             emitGlobalClickEvent() {
                 console.log('this method was called');
+                this.allFilters = [];
                 var i;
                 var j;
+                this.days = [];
                 for (i = 0; i < this.checkedDays.length; i++) {
                     this.days += this.checkedDays[i];
                 }
-                this.allFilters.push(this.college);
-                this.allFilters.push(this.credit_hours);
-                this.allFilters.push(this.days);
-                this.allFilters.push(this.searchResult);
-
-                EventBus.$emit('filtersSelected', this.allFilters);
+                this.allFilters.push({'COLLEGE': this.college});
+                this.allFilters.push({'CREDIT_HOURS': this.credit_hours});
+                this.allFilters.push({'DAYS': this.days});
+                this.allFilters.push({'TITLE': this.searchResult});
+                this.$emit('clicked', this.allFilters);
             }
         }
     }
@@ -122,7 +123,7 @@
     font-size: 1em;
   }
 
-  .filter_panel .checkboxes{    
+  .filter_panel .checkboxes{
     padding: 8px 8px 8px 8px;
     font-size: 16px;
     margin-bottom: 16px;
@@ -151,7 +152,7 @@
     font-size: 18px;
     text-align: center;
   }
-    
+
   .submit .submit_button {
     border-radius: 2px;
     border-color: black;
