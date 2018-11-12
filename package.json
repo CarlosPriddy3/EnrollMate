@@ -15,9 +15,11 @@
     "@fortawesome/vue-fontawesome": "^0.1.1",
     "bootstrap-vue": "^2.0.0-rc.11",
     "firebase": "^5.5.2",
+    "hashset": "0.0.6",
     "material-design-icons-iconfont": "^3.0.3",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+    "vue-select": "^2.5.1",
     "vuefire": "^1.4.5",
     "vuetify": "^1.2.3"
   },
