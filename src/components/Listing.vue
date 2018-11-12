@@ -6,6 +6,9 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 		<div class="listing" style="overflow-y: scroll;">
+    <div>
+      Filters to be applied are: {{ selectedFilters }}
+    </div>
 	    <v-expansion-panel expand>
 	      <v-expansion-panel-content v-for="subject in subjects">
 	      	<div slot="header">{{ subject.classname }}</div>
@@ -67,6 +70,7 @@
       return {
         search: '',
         instructor: '',
+        selectedFilters: [],
         subjects: [
         {id: 'ACC', classname: 'Accounting'},
         {id: 'ARH', classname: 'Art History'}, {id: 'ARS', classname: 'Art Studio'},
@@ -102,6 +106,12 @@
         {id: 'WLC', classname: 'World Languages and Cultures '}
         ]
       }
+    },
+
+    mounted() {
+      EventBus.$on('filtersSelected', allFilters => {
+        this.selectedFilters = allFilters;
+      });
     },
 
     computed: {
@@ -142,11 +152,6 @@
       	}
     }
   };
-
-  EventBus.$on('filtersSelected', allFilters => {
-    console.log(allFilters);
-    this.filterBySearch(allFilters);
-  });
 
 </script>
 
