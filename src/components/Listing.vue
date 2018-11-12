@@ -36,7 +36,6 @@
                   </tr>
                 </table>
                 <figure>
-
                   <svg class="chart" width="450" height="500">
                   <g transform="scale(1, -1) translate(1, -450)">
                       <rect width="50" :height="randomValues[Object.values(course)[22]][0] * 4" fill="royalblue"></rect>
@@ -94,6 +93,42 @@
                     </g>
                   </svg>
                   <figcaption>Enrollment By Semester</figcaption>
+                </figure>
+                <figure>
+                <svg height="250" width="800">
+                <g class="grid x-grid" id="xGrid">
+                  <line x1="80" y1="50" x2="80" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
+                </g>
+                <g class="grid y-grid" id="yGrid">
+                  <line x1="80" y1="150" x2="800" y2="150" style="stroke:rgb(255,0,0);stroke-width:2" />
+                </g>
+                  <g class="labels x-labels">
+                  <text x="146" y="200">SPR 2017</text>
+                  <text x="229" y="200">SMR 2017</text>
+                  <text x="312" y="200">FALL 2017</text>
+                  <text x="395" y="200">SPR 2018</text>
+                  <text x="478" y="200">SMR 2018</text>
+                  <text x="561" y="200">FALL 2018</text>
+                  <text x="300" y="240" class="label-title">Semester</text>
+                </g>
+                <g class="labels y-labels">
+                  <text x="80" y="50">{{Math.round(course.CURRENT_ENRL * 1.25)}}</text>
+                  <text x="80" y="100">{{course.CURRENT_ENRL}}</text>
+                  <text x="80" y="150">{{Math.round(course.CURRENT_ENRL * 3 / 4)}}</text>
+                  <text x="05" y="100" class="label-title">Enrollment</text>
+                </g>
+                <g class="data" data-setname="Our first data set">
+                  <circle cx="166" :cy="200 - convertToRange(randomValues[Object.values(course)[22]][0], course.CURRENT_ENRL, course)" data-value="7.2" r="4"></circle>
+                  <circle cx="249" :cy="200 - convertToRange(randomValues[Object.values(course)[22]][1], course.CURRENT_ENRL, course)" data-value="8.1" r="4"></circle>
+                  <circle cx="332" :cy="200 - convertToRange(randomValues[Object.values(course)[22]][2], course.CURRENT_ENRL, course)" data-value="7.7" r="4"></circle>
+                  <circle cx="415" :cy="200 - convertToRange(randomValues[Object.values(course)[22]][3], course.CURRENT_ENRL, course)" data-value="6.8" r="4"></circle>
+                  <circle cx="498" :cy="200 - convertToRange(randomValues[Object.values(course)[22]][4], course.CURRENT_ENRL, course)" data-value="6.7" r="4"></circle>
+                  <circle cx="581" :cy="200 - convertToRange(course.CURRENT_ENRL, course.CURRENT_ENRL, course)" data-value="6.7" r="4"></circle>
+                </g>
+                <svg height="210" width="500">
+                  <line x1="0" y1="0" x2="500" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
+                </svg>
+                </svg>
                 </figure>
               </v-card-text>
 	      	</v-expansion-panel-content>
@@ -183,7 +218,7 @@
                     var randomValues = {};
                     var dbRef = this.dbRef.slice();
                     for (var item in dbRef) {
-                      console.log(item);
+                      //console.log(item);
                       randomValues[item] = new Array(
                       Math.round(((dbRef[item].CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8))),
                       Math.round(((dbRef[item].CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8))),
@@ -191,7 +226,7 @@
                       Math.round(((dbRef[item].CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8))),
                       Math.round(((dbRef[item].CURRENT_ENRL) * (Math.random() * (1.2 - .8) + .8))));
                     }
-                    console.log(randomValues)
+                    //console.log(randomValues)
                     return randomValues;
 
                 }
@@ -238,6 +273,21 @@
       	  //console.log("IN GET RANDOM NUMBER");
       	  //console.log(this.randomNumber);
       	  return this.randomNumber;
+      	},
+
+      	convertToRange: function(oldVal, curEnroll, course) {
+      	var newRange = 100
+      	var oldMin = Math.round(curEnroll * .75)
+      	var oldMax = Math.round(curEnroll * 1.25)
+      	var oldRange = oldMax - oldMin
+      	if (oldRange == 0 || curEnroll == 0) {
+      	  oldRange = 1
+      	}
+      	var newVal =  (Math.round((((oldVal - oldMin) * newRange) / oldRange)) + 50)
+      	if (curEnroll == 51) {
+      	  console.log(newVal + course.TITLE)
+      	}
+      	return newVal
       	}
     }
   }
