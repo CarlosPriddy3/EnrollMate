@@ -69,13 +69,17 @@
   import HashSet from 'hashset'
   export default {
     firebase: {
-              dbRef: db.ref('/')
+      filteredList: {
+      source: db.ref('/')
+      },
+      dbRef: db.ref('/')
     },
     components: {
       'Filtering': Filtering
     },
     data () {
       return {
+        filteredList: {},
         search: '',
         instructor: '',
         selectedFilters: [],
@@ -124,9 +128,14 @@
 
     computed: {
         // List of classes - Default 0 filters
-        filteredList: function() {
+        /*filteredList: {
+          get: function() {
             return this.dbRef
-        },
+          },
+          set: function (newValue) {
+            this.fileredList = newValue;
+          }
+        },*/
         // List of Alphabetically Sorted professors
         professorList: function() {
             var profSet = new HashSet();
@@ -143,17 +152,23 @@
       	//ObjectLiteral format: {DAYS: {filter0: "MWF", filter1: "TR"}, INSTRUCTOR: {filter0: "Waddell, Emmanuel"} }
       	filterBySearch: function(searchTerms) {
       	  //For each search term, filter our list
-      	  console.log("FILTERING");
-      	  console.log(searchTerms);
-      	  var tempList = this.dbRef.slice()
-      	  for (var key in Object.keys(searchTerms)) {
-      	      tempList = this.filterList(tempList.slice(), key, searchTerms[key]) //key should be 'MWF'
+      	  var filters = Object.keys(searchTerms);
+      	  var tempList = this.filteredList.slice()
+      	  for (var idx in filters) {
+      	      var key = filters[idx]
+      	      if (key != 0 && searchTerms[key] != "") {
+      	          tempList = this.filterList(tempList.slice(), key, searchTerms[key]) //key should be 'MWF'
+      	      }
+
       	  }
+      	  console.log(tempList);
       	  this.filteredList = tempList;
+      	  console.log(this.filteredList);
       	},
       	//Takes any list and any HEADER in the CSV file as a filterType and filters by value
       	filterList: function(listToFilter, filterByType, filterByVal) {
           var newList = []
+          console.log(filterByVal + " FILTERING BY ")
           for (var key in Object.keys(listToFilter)) {
             if (listToFilter[key][filterByType].toLowerCase().match(filterByVal.toLowerCase())) {
               newList.push(listToFilter[key])
@@ -162,6 +177,7 @@
           return newList
       	},
       	onClickChild (value) {
+      	  this.filteredList = this.dbRef.slice()
           this.filterBySearch(value);
         }
     }

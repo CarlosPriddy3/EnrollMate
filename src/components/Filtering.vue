@@ -65,23 +65,27 @@
                 checkedDays: [],
                 days: "",
                 searchResult: '',
-                allFilters: []
+                allFilters: {}
             }
         },
         methods: {
             emitGlobalClickEvent() {
                 console.log('this method was called');
-                this.allFilters = [];
+                this.allFilters = {};
                 var i;
                 var j;
                 this.days = [];
                 for (i = 0; i < this.checkedDays.length; i++) {
                     this.days += this.checkedDays[i];
                 }
-                this.allFilters.push({'COLLEGE': this.college});
-                this.allFilters.push({'CREDIT_HOURS': this.credit_hours});
-                this.allFilters.push({'DAYS': this.days});
-                this.allFilters.push({'TITLE': this.searchResult});
+                this.allFilters['COLLEGE'] = this.college;
+                this.allFilters['CREDIT_HOURS'] = this.credit_hours;
+                this.allFilters['DAYS'] = this.days;
+                this.allFilters['TITLE'] = this.searchResult;
+                var keys = Object.keys(this.allFilters);
+                for (var key in keys) {
+                    console.log(keys[key]);
+                }
                 this.$emit('clicked', this.allFilters);
             }
         }
