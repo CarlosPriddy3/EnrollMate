@@ -97,10 +97,10 @@
                 <figure>
                 <svg height="250" width="800">
                 <g class="grid x-grid" id="xGrid">
-                  <line x1="80" y1="50" x2="80" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
+                  <line x1="100" y1="0" x2="100" y2="175" style="stroke:rgb(0,0,0);stroke-width:2" />
                 </g>
                 <g class="grid y-grid" id="yGrid">
-                  <line x1="80" y1="150" x2="800" y2="150" style="stroke:rgb(255,0,0);stroke-width:2" />
+                  <line x1="100" y1="175" x2="800" y2="175" style="stroke:rgb(0,0,0);stroke-width:2" />
                 </g>
                   <g class="labels x-labels">
                   <text x="146" y="200">SPR 2017</text>
@@ -125,9 +125,9 @@
                   <circle cx="498" :cy="200 - convertToRange(randomValues[Object.values(course)[22]][4], course.CURRENT_ENRL, course)" data-value="6.7" r="4"></circle>
                   <circle cx="581" :cy="200 - convertToRange(course.CURRENT_ENRL, course.CURRENT_ENRL, course)" data-value="6.7" r="4"></circle>
                 </g>
-                <svg height="210" width="500">
+                <!--<svg height="210" width="500">
                   <line x1="0" y1="0" x2="500" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
-                </svg>
+                </svg>-->
                 </svg>
                 </figure>
               </v-card-text>
