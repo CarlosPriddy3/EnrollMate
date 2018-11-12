@@ -1,10 +1,17 @@
 <template>
+
 	<div class="root">
     <!-- <div class="search">
       <v-text-field v-model="search" solo label="Search College..." append-icon="search"></v-text-field>
     </div> -->
+    <div class="filtering">
+         <Filtering @clicked="onClickChild"></Filtering>
+    </div>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 		<div class="listing" style="overflow-y: scroll;">
+    <div>
+      Filters to be applied are: {{ selectedFilters }}
+    </div>
 	    <v-expansion-panel expand>
 	      <v-expansion-panel-content v-for="subject in subjects">
 	      	<div slot="header">{{ subject.classname }}</div>
@@ -136,11 +143,14 @@
 	    </v-expansion-panel>
 	  </div>
 	</div>
+
 </template>
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
+  import { EventBus } from './event-bus.js';
   import Firebase from 'firebase'
+  import Filtering from './Filtering'
   let config = {
         apiKey: "AIzaSyD9Vy8LSVUVYJ1xQpsVjJeZUsoLbcax3TQ",
         authDomain: "testdatabase-575ac.firebaseapp.com",
@@ -152,16 +162,23 @@
 
   let firebaseApp = Firebase.initializeApp(config)
   let db = firebaseApp.database()
-
+  import HashSet from 'hashset'
   export default {
     firebase: {
-              dbRef: db.ref('/')
+      filteredList: {
+      source: db.ref('/')
+      },
+      dbRef: db.ref('/')
+    },
+    components: {
+      'Filtering': Filtering
     },
     data () {
       return {
-        randomNumber: 0,
+        filteredList: {},
         search: '',
         instructor: '',
+        selectedFilters: [],
         subjects: [
         {id: 'ACC', classname: 'Accounting'},
         {id: 'ARH', classname: 'Art History'}, {id: 'ARS', classname: 'Art Studio'},
@@ -199,19 +216,16 @@
       }
     },
 
+    mounted() {
+      EventBus.$on('filtersSelected', allFilters => {
+        Listing.filterBySearch()
+      });
+    },
+
     computed: {
-        subArrs: {
-            get: function() {return [
-                function() {return this.accRef},
-                function() {return this.maRef},
-            ]}
-        },
-      	filteredSubjects: function() {
-            return this.subjects.filter((college) => {
-                return college.id.toLowerCase().match(this.search.toLowerCase())
-            })
-        },
-        filteredList: function() {
+        // List of classes - Default 0 filters
+        /*filteredList: {
+          get: function() {
             return this.dbRef
         },
         randomValues: function() {
@@ -230,28 +244,39 @@
                     return randomValues;
 
                 }
+        // List of Alphabetically Sorted professors
+        professorList: function() {
+            var profSet = new HashSet();
+            var dbRef = this.dbRef.slice();
+            for (var key in Object.keys(dbRef)) {
+              console.log(dbRef[key].INSTRUCTOR);
+              profSet.add("" + dbRef[key].INSTRUCTOR + ", " + dbRef[key].FIRST_NAME);
+            }
+            return profSet.toArray().sort();
+        }
     },
     methods: {
-      	subjRefer: function(subj) {
-       		return this.dbRef.filter((singleClass) => {
-          		return singleClass.SUBJ === subj
-       		})
-      	},
-      	instrRefer: function(instructor) {
-        	return this.dbRef.filter((singleClass) => {
-          		return singleClass.INSTRUCTOR === instructor
-      		})
-      	},
-      	//searchTerms will be an objectLiteral maybe? Looks like {DAYS: MWF, INSTRUCTOR: Waddell}
+        //Filters the filteredList by given searchterms in the following format:
+      	//ObjectLiteral format: {DAYS: {filter0: "MWF", filter1: "TR"}, INSTRUCTOR: {filter0: "Waddell, Emmanuel"} }
       	filterBySearch: function(searchTerms) {
       	  //For each search term, filter our list
-      	  filteredList = this.dbRef.slice()
-      	  for (var key in Object.keys(searchTerms)) {
-      	      filteredList = filterList(filteredList.slice(), key, searchTerms[key]) //key should be 'MWF'
+      	  var filters = Object.keys(searchTerms);
+      	  var tempList = this.filteredList.slice()
+      	  for (var idx in filters) {
+      	      var key = filters[idx]
+      	      if (key != 0 && searchTerms[key] != "") {
+      	          tempList = this.filterList(tempList.slice(), key, searchTerms[key]) //key should be 'MWF'
+      	      }
+
       	  }
+      	  console.log(tempList);
+      	  this.filteredList = tempList;
+      	  console.log(this.filteredList);
       	},
+      	//Takes any list and any HEADER in the CSV file as a filterType and filters by value
       	filterList: function(listToFilter, filterByType, filterByVal) {
           var newList = []
+          console.log(filterByVal + " FILTERING BY ")
           for (var key in Object.keys(listToFilter)) {
             if (listToFilter[key][filterByType].toLowerCase().match(filterByVal.toLowerCase())) {
               newList.push(listToFilter[key])
@@ -261,6 +286,10 @@
           console.log("LIST FOR " + filterByVal)
           console.log(newList)*/
           return newList
+      	},
+      	onClickChild (value) {
+      	  this.filteredList = this.dbRef.slice()
+          this.filterBySearch(value);
       	},
 
       	createRandomNumber: function(value) {
@@ -290,11 +319,12 @@
       	return newVal
       	}
     }
-  }
+  };
+
 </script>
 
 <style>
-	.listing {
+  .listing {
 		margin:75px;
 		margin-bottom: -75px;
 		text-align: center;
@@ -302,12 +332,6 @@
 		height: 825px;
 		box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 	}
-	.search {
-      margin-left: 75px;
-      margin-bottom: -75px;
-      margin-top: 25px;
-      width:500px;
-    }
   td, th {
       padding-right: 10px;
   }
