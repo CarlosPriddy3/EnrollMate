@@ -2,6 +2,7 @@
 ## EnrollMate, Team JID 8121
 
 **Release Notes**
+
 *New software features for this release*
 * Can scroll through all classes currently offered by the University of Alabama in Huntsville
 * All classes have a dropdown menu which opens to a detailed view of information about the class, including past enrollment data and a visualization of past and current enrollment
@@ -11,6 +12,7 @@
 
 
 *Bug fixes made since the last release*
+
 As this is the first release of this application, there are no bug fixes made since the last release.
 
 
@@ -20,7 +22,9 @@ As this is the first release of this application, there are no bug fixes made si
 * The initial load time for the page is relatively high, but afterwards runs smoothly.
 
 **Install Guide**
+
 *Pre-requisites*
+
 
 
 *Dependent libraries that must be installed*
@@ -35,6 +39,7 @@ As this is the first release of this application, there are no bug fixes made si
       * Homebrew, a package manager, will need to be installed by opening a terminal window and running the command: “ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"” (without external quotation marks) then hit enter.
          * You’ll see messages in the Terminal explaining what you need to do to complete the installation process.
       * After doing the above, open the Terminal and type: “brew install node” (without quotation marks) then hit enter.
+
 
 
 *Download instructions*
