@@ -14,190 +14,190 @@
         Filters to be applied are: {{ selectedFilters }}
       </div>
       <div class="accounting">
-        <Accounting :accountingClasses="filterList(filteredList, 'SUBJ', 'ACC')" :randomValues="randomValues" :convertToRange="convertToRange"></Accounting>
+        <Accounting v-if="accList.length > 0" :accountingClasses="accList" :randomValues="randomValues" :convertToRange="convertToRange"></Accounting>
       </div>
       <div class="arthistory">
-        <ArtHistory :arthistClasses="filterList(filteredList, 'SUBJ', 'ARH')" :randomValues="randomValues" :convertToRange="convertToRange"></ArtHistory>
+        <ArtHistory v-if="arthistList.length > 0" :arthistClasses="arthistList" :randomValues="randomValues" :convertToRange="convertToRange"></ArtHistory>
       </div>
-      <div class="atsScience">
-        <ArtStudio :artstudClasses="filterList(filteredList, 'SUBJ', 'ARS')" :randomValues="randomValues" :convertToRange="convertToRange"></ArtStudio>
+      <div class="artstud">
+        <ArtStudio v-if="artstudList.length > 0" :artstudClasses="artstudList" :randomValues="randomValues" :convertToRange="convertToRange"></ArtStudio>
       </div>
       <div class="astronomy">
-        <Astronomy :astClasses="filterList(filteredList, 'SUBJ', 'AST')" :randomValues="randomValues" :convertToRange="convertToRange"></Astronomy>
+        <Astronomy v-if="astronomyList.length > 0" :astClasses="astronomyList" :randomValues="randomValues" :convertToRange="convertToRange"></Astronomy>
       </div>
       <div class="atsscience">
-        <AtsSci :atssciClasses="filterList(filteredList, 'SUBJ', 'ATS')" :randomValues="randomValues" :convertToRange="convertToRange"></AtsSci>
+        <AtsSci v-if="atsscienceList.length > 0" :atssciClasses="atsscienceList" :randomValues="randomValues" :convertToRange="convertToRange"></AtsSci>
       </div>
       <div class="busleg">
-        <BusLeg :buglegClasses="filterList(filteredList, 'SUBJ', 'BLS')" :randomValues="randomValues" :convertToRange="convertToRange"></BusLeg>
+        <BusLeg v-if="buslegList.length > 0" :buslegClasses="buslegList" :randomValues="randomValues" :convertToRange="convertToRange"></BusLeg>
       </div>
       <div class="bioscieng">
-        <BioSciEng :biosciengClasses="filterList(filteredList, 'SUBJ', 'BSE')" :randomValues="randomValues" :convertToRange="convertToRange"></BioSciEng>
+        <BioSciEng v-if="biosciengList.length > 0" :biosciengClasses="biosciengList" :randomValues="randomValues" :convertToRange="convertToRange"></BioSciEng>
       </div>
       <div class="business">
-        <Business :busClasses="filterList(filteredList, 'SUBJ', 'BUS')" :randomValues="randomValues" :convertToRange="convertToRange"></Business>
+        <Business v-if="businessList.length > 0" :businessClasses="businessList" :randomValues="randomValues" :convertToRange="convertToRange"></Business>
       </div>
       <div class="biosci">
-        <BioSci :biosciClasses="filterList(filteredList, 'SUBJ', 'BYS')" :randomValues="randomValues" :convertToRange="convertToRange"></BioSci>
+        <BioSci v-if="biosciList.length > 0" :biosciClasses="biosciList" :randomValues="randomValues" :convertToRange="convertToRange"></BioSci>
       </div>
       <div class="civeng">
-        <CivEng :civengClasses="filterList(filteredList, 'SUBJ', 'CE')" :randomValues="randomValues" :convertToRange="convertToRange"></CivEng>
+        <CivEng v-if="civengList.length > 0" :civengClasses="civengList" :randomValues="randomValues" :convertToRange="convertToRange"></CivEng>
       </div>
       <div class="chem">
-        <Chem :chemClasses="filterList(filteredList, 'SUBJ', 'CH')" :randomValues="randomValues" :convertToRange="convertToRange"></Chem>
+        <Chem v-if="chemList.length > 0" :chemClasses="chemList" :randomValues="randomValues" :convertToRange="convertToRange"></Chem>
       </div>
       <div class="chemeng">
-        <ChemEng :chemengClasses="filterList(filteredList, 'SUBJ', 'CHE')" :randomValues="randomValues" :convertToRange="convertToRange"></ChemEng>
+        <ChemEng v-if="chemengList.length > 0" :chemengClasses="chemengList" :randomValues="randomValues" :convertToRange="convertToRange"></ChemEng>
       </div>
       <div class="commarts">
-        <CommArts :commartsClasses="filterList(filteredList, 'SUBJ', 'CM')" :randomValues="randomValues" :convertToRange="convertToRange"></CommArts>
+        <CommArts v-if="commartsList.length > 0" :commartsClasses="commartsList" :randomValues="randomValues" :convertToRange="convertToRange"></CommArts>
       </div>
       <div class="compeng">
-        <CompEng :compengClasses="filterList(filteredList, 'SUBJ', 'CPE')" :randomValues="randomValues" :convertToRange="convertToRange"></CompEng>
+        <CompEng v-if="compengList.length > 0" :compengClasses="compengList" :randomValues="randomValues" :convertToRange="convertToRange"></CompEng>
       </div>
       <div class="compsci">
-        <CompSci :compsciClasses="filterList(filteredList, 'SUBJ', 'CS')" :randomValues="randomValues" :convertToRange="convertToRange"></CompSci>
+        <CompSci v-if="compsciList.length > 0" :compsciClasses="compsciList" :randomValues="randomValues" :convertToRange="convertToRange"></CompSci>
       </div>
       <div class="econ">
-        <Econ :econClasses="filterList(filteredList, 'SUBJ', 'ECN')" :randomValues="randomValues" :convertToRange="convertToRange"></Econ>
+        <Econ v-if="econList.length > 0" :econClasses="econList" :randomValues="randomValues" :convertToRange="convertToRange"></Econ>
       </div>
       <div class="educ">
-        <Educ :educClasses="filterList(filteredList, 'SUBJ', 'ED')" :randomValues="randomValues" :convertToRange="convertToRange"></Educ>
+        <Educ v-if="educList.length > 0" :educClasses="educList" :randomValues="randomValues" :convertToRange="convertToRange"></Educ>
       </div>
       <div class="educollab">
-        <EduCollab :educollabClasses="filterList(filteredList, 'SUBJ', 'EDC')" :randomValues="randomValues" :convertToRange="convertToRange"></EduCollab>
+        <EduCollab v-if="educollabList.length > 0" :educollabClasses="educollabList" :randomValues="randomValues" :convertToRange="convertToRange"></EduCollab>
       </div>
       <div class="eleceng">
-        <ElecEng :elecengClasses="filterList(filteredList, 'SUBJ', 'EE')" :randomValues="randomValues" :convertToRange="convertToRange"></ElecEng>
+        <ElecEng v-if="elecengList.length > 0" :elecengClasses="elecengList" :randomValues="randomValues" :convertToRange="convertToRange"></ElecEng>
       </div>
       <div class="engl">
-        <Engl :englClasses="filterList(filteredList, 'SUBJ', 'EH')" :randomValues="randomValues" :convertToRange="convertToRange"></Engl>
+        <Engl v-if="englList.length > 0" :englClasses="englList" :randomValues="randomValues" :convertToRange="convertToRange"></Engl>
       </div>
       <div class="engling">
-        <EngLing :englingClasses="filterList(filteredList, 'SUBJ', 'EHL')" :randomValues="randomValues" :convertToRange="convertToRange"></EngLing>
+        <EngLing v-if="englingList.length > 0" :englingClasses="englingList" :randomValues="randomValues" :convertToRange="convertToRange"></EngLing>
       </div>
       <div class="engmgmt">
-        <EngMgmt :engmgmtClasses="filterList(filteredList, 'SUBJ', 'EM')" :randomValues="randomValues" :convertToRange="convertToRange"></EngMgmt>
+        <EngMgmt v-if="engmgmtList.length > 0" :engmgmtClasses="engmgmtList" :randomValues="randomValues" :convertToRange="convertToRange"></EngMgmt>
       </div>
       <div class="engineer">
-        <Engineer :engineerClasses="filterList(filteredList, 'SUBJ', 'ENG')" :randomValues="randomValues" :convertToRange="convertToRange"></Engineer>
+        <Engineer v-if="engineerList.length > 0" :engineerClasses="engineerList" :randomValues="randomValues" :convertToRange="convertToRange"></Engineer>
       </div>
       <div class="earthsys">
-        <EarthSys :earthsysClasses="filterList(filteredList, 'SUBJ', 'ESS')" :randomValues="randomValues" :convertToRange="convertToRange"></EarthSys>
+        <EarthSys v-if="earthsysList.length > 0" :earthsysClasses="earthsysList" :randomValues="randomValues" :convertToRange="convertToRange"></EarthSys>
       </div>
       <div class="finance">
-        <Finance :financeClasses="filterList(filteredList, 'SUBJ', 'FIN')" :randomValues="randomValues" :convertToRange="convertToRange"></Finance>
+        <Finance v-if="financeList.length > 0" :financeClasses="financeList" :randomValues="randomValues" :convertToRange="convertToRange"></Finance>
       </div>
       <div class="firstyear">
-        <FirstYear :firstyearClasses="filterList(filteredList, 'SUBJ', 'FYE')" :randomValues="randomValues" :convertToRange="convertToRange"></FirstYear>
+        <FirstYear v-if="firstyearList.length > 0" :firstyearClasses="firstyearList" :randomValues="randomValues" :convertToRange="convertToRange"></FirstYear>
       </div>
       <div class="globstud">
-        <GlobStud :globstudClasses="filterList(filteredList, 'SUBJ', 'GS')" :randomValues="randomValues" :convertToRange="convertToRange"></GlobStud>
+        <GlobStud v-if="globstudList.length > 0" :globstudClasses="globstudList" :randomValues="randomValues" :convertToRange="convertToRange"></GlobStud>
       </div>
       <div class="geog">
-        <Geog :geogClasses="filterList(filteredList, 'SUBJ', 'GY')" :randomValues="randomValues" :convertToRange="convertToRange"></Geog>
+        <Geog v-if="geogList.length > 0" :geogClasses="geogList" :randomValues="randomValues" :convertToRange="convertToRange"></Geog>
       </div>
       <div class="honors">
-        <Honors :honorsClasses="filterList(filteredList, 'SUBJ', 'HON')" :randomValues="randomValues" :convertToRange="convertToRange"></Honors>
+        <Honors v-if="honorsList.length > 0" :honorsClasses="honorsList" :randomValues="randomValues" :convertToRange="convertToRange"></Honors>
       </div>
       <div class="health">
-        <Health :healthClasses="filterList(filteredList, 'SUBJ', 'HPE')" :randomValues="randomValues" :convertToRange="convertToRange"></Health>
+        <Health v-if="healthList.length > 0" :healthClasses="healthList" :randomValues="randomValues" :convertToRange="convertToRange"></Health>
       </div>
       <div class="hist">
-        <Hist :histClasses="filterList(filteredList, 'SUBJ', 'HY')" :randomValues="randomValues" :convertToRange="convertToRange"></Hist>
+        <Hist v-if="histList.length > 0" :histClasses="histList" :randomValues="randomValues" :convertToRange="convertToRange"></Hist>
       </div>
       <div class="intlang">
-        <IntLang :inglangClasses="filterList(filteredList, 'SUBJ', 'ILC')" :randomValues="randomValues" :convertToRange="convertToRange"></IntLang>
+        <IntLang v-if="intlangList.length > 0" :inglangClasses="intlangList" :randomValues="randomValues" :convertToRange="convertToRange"></IntLang>
       </div>
       <div class="infosys">
-        <InfoSys :infoSysClasses="filterList(filteredList, 'SUBJ', 'IS')" :randomValues="randomValues" :convertToRange="convertToRange"></InfoSys>
+        <InfoSys v-if="infosysList.length > 0" :infoSysClasses="infosysList" :randomValues="randomValues" :convertToRange="convertToRange"></InfoSys>
       </div>
       <div class="indsyseng">
-        <IndSysEng :indsysengClasses="filterList(filteredList, 'SUBJ', 'ISE')" :randomValues="randomValues" :convertToRange="convertToRange"></IndSysEng>
+        <IndSysEng v-if="indsysengList.length > 0" :indsysengClasses="indsysengList" :randomValues="randomValues" :convertToRange="convertToRange"></IndSysEng>
       </div>
       <div class="kines">
-        <Kines :kinesClasses="filterList(filteredList, 'SUBJ', 'KIN')" :randomValues="randomValues" :convertToRange="convertToRange"></Kines>
+        <Kines v-if="kinesList.length > 0" :kinesClasses="kinesList" :randomValues="randomValues" :convertToRange="convertToRange"></Kines>
       </div>
       <div class="listlic">
-        <ListLic :listlicClasses="filterList(filteredList, 'SUBJ', 'LLP')" :randomValues="randomValues" :convertToRange="convertToRange"></ListLic>
+        <ListLic v-if="listlicList.length > 0" :listlicClasses="listlicList" :randomValues="randomValues" :convertToRange="convertToRange"></ListLic>
       </div>
       <div class="mat">
-        <Mat :matClasses="filterList(filteredList, 'SUBJ', 'MA')" :randomValues="randomValues" :convertToRange="convertToRange"></Mat>
+        <Mat v-if="matList.length > 0" :matClasses="matList" :randomValues="randomValues" :convertToRange="convertToRange"></Mat>
       </div>
       <div class="mechaero">
-        <MechAero :mechaeroClasses="filterList(filteredList, 'SUBJ', 'MAE')" :randomValues="randomValues" :convertToRange="convertToRange"></MechAero>
+        <MechAero v-if="mechaeroList.length > 0" :mechaeroClasses="mechaeroList" :randomValues="randomValues" :convertToRange="convertToRange"></MechAero>
       </div>
       <div class="mgmt">
-        <Mgmt :mgmtClasses="filterList(filteredList, 'SUBJ', 'MGT')" :randomValues="randomValues" :convertToRange="convertToRange"></Mgmt>
+        <Mgmt v-if="mgmtList.length > 0" :mgmtClasses="mgmtList" :randomValues="randomValues" :convertToRange="convertToRange"></Mgmt>
       </div>
       <div class="milsci">
-        <MilSci :milsciClasses="filterList(filteredList, 'SUBJ', 'MIL')" :randomValues="randomValues" :convertToRange="convertToRange"></MilSci>
+        <MilSci v-if="milsciList.length > 0" :milsciClasses="milsciList" :randomValues="randomValues" :convertToRange="convertToRange"></MilSci>
       </div>
       <div class="market">
-        <Market :marketClasses="filterList(filteredList, 'SUBJ', 'MKT')" :randomValues="randomValues" :convertToRange="convertToRange"></Market>
+        <Market v-if="marketList.length > 0" :marketClasses="marketList" :randomValues="randomValues" :convertToRange="convertToRange"></Market>
       </div>
       <div class="mgmtsci">
-        <MgmtSci :mgmtsciClasses="filterList(filteredList, 'SUBJ', 'MSC')" :randomValues="randomValues" :convertToRange="convertToRange"></MgmtSci>
+        <MgmtSci v-if="mgmtsciList.length > 0" :mgmtsciClasses="mgmtsciList" :randomValues="randomValues" :convertToRange="convertToRange"></MgmtSci>
       </div>
       <div class="matsci">
-        <MatSci :matsciClasses="filterList(filteredList, 'SUBJ', 'MTS')" :randomValues="randomValues" :convertToRange="convertToRange"></MatSci>
+        <MatSci v-if="matsciList.length > 0" :matsciClasses="matsciList" :randomValues="randomValues" :convertToRange="convertToRange"></MatSci>
       </div>
       <div class="music">
-        <Music :musicClasses="filterList(filteredList, 'SUBJ', 'MU')" :randomValues="randomValues" :convertToRange="convertToRange"></Music>
+        <Music v-if="musicList.length > 0" :musicClasses="musicList" :randomValues="randomValues" :convertToRange="convertToRange"></Music>
       </div>
       <div class="musappl">
-        <MusAppl :musapplClasses="filterList(filteredList, 'SUBJ', 'MUA')" :randomValues="randomValues" :convertToRange="convertToRange"></MusAppl>
+        <MusAppl v-if="musapplList.length > 0" :musapplClasses="musapplList" :randomValues="randomValues" :convertToRange="convertToRange"></MusAppl>
       </div>
       <div class="jazz">
-        <Jazz :jazzClasses="filterList(filteredList, 'SUBJ', 'MUJ')" :randomValues="randomValues" :convertToRange="convertToRange"></Jazz>
+        <Jazz v-if="jazzList.length > 0" :jazzClasses="jazzList" :randomValues="randomValues" :convertToRange="convertToRange"></Jazz>
       </div>
       <div class="ensemble">
-        <Ensemble :ensembleClasses="filterList(filteredList, 'SUBJ', 'MUX')" :randomValues="randomValues" :convertToRange="convertToRange"></Ensemble>
+        <Ensemble v-if="ensembleList.length > 0" :ensembleClasses="ensembleList" :randomValues="randomValues" :convertToRange="convertToRange"></Ensemble>
       </div>
       <div class="nursing">
-        <Nursing :nursingClasses="filterList(filteredList, 'SUBJ', 'NUR')" :randomValues="randomValues" :convertToRange="convertToRange"></Nursing>
+        <Nursing v-if="nursingList.length > 0" :nursingClasses="nursingList" :randomValues="randomValues" :convertToRange="convertToRange"></Nursing>
       </div>
       <div class="offcar">
-        <OffCar :offcarClasses="filterList(filteredList, 'SUBJ', 'OCS')" :randomValues="randomValues" :convertToRange="convertToRange"></OffCar>
+        <OffCar v-if="offcarList.length > 0" :offcarClasses="offcarList" :randomValues="randomValues" :convertToRange="convertToRange"></OffCar>
       </div>
       <div class="opteng">
-        <OptEng :optengClasses="filterList(filteredList, 'SUBJ', 'OPE')" :randomValues="randomValues" :convertToRange="convertToRange"></OptEng>
+        <OptEng v-if="optengList.length > 0" :optengClasses="optengList" :randomValues="randomValues" :convertToRange="convertToRange"></OptEng>
       </div>
       <div class="phys">
-        <Phys :physClasses="filterList(filteredList, 'SUBJ', 'PH')" :randomValues="randomValues" :convertToRange="convertToRange"></Phys>
+        <Phys v-if="physList.length > 0" :physClasses="physList" :randomValues="randomValues" :convertToRange="convertToRange"></Phys>
       </div>
       <div class="phil">
-        <Phil :philClasses="filterList(filteredList, 'SUBJ', 'PHL')" :randomValues="randomValues" :convertToRange="convertToRange"></Phil>
+        <Phil v-if="philList.length > 0" :philClasses="philList" :randomValues="randomValues" :convertToRange="convertToRange"></Phil>
       </div>
       <div class="profstud">
-        <ProfStud :profstudClasses="filterList(filteredList, 'SUBJ', 'PRO')" :randomValues="randomValues" :convertToRange="convertToRange"></ProfStud>
+        <ProfStud v-if="profstudList.length > 0" :profstudClasses="profstudList" :randomValues="randomValues" :convertToRange="convertToRange"></ProfStud>
       </div>
       <div class="polsci">
-        <PolSci :polsciClasses="filterList(filteredList, 'SUBJ', 'PSC')" :randomValues="randomValues" :convertToRange="convertToRange"></PolSci>
+        <PolSci v-if="polsciList.length > 0" :polsciClasses="polsciList" :randomValues="randomValues" :convertToRange="convertToRange"></PolSci>
       </div>
       <div class="psy">
-        <Psy :psyClasses="filterList(filteredList, 'SUBJ', 'PY')" :randomValues="randomValues" :convertToRange="convertToRange"></Psy>
+        <Psy v-if="psyList.length > 0" :psyClasses="psyList" :randomValues="randomValues" :convertToRange="convertToRange"></Psy>
       </div>
       <div class="soc">
-        <Soc :socClasses="filterList(filteredList, 'SUBJ', 'SOC')" :randomValues="randomValues" :convertToRange="convertToRange"></Soc>
+        <Soc v-if="socList.length > 0" :socClasses="socList" :randomValues="randomValues" :convertToRange="convertToRange"></Soc>
       </div>
       <div class="spasci">
-        <SpaSci :spasciClasses="filterList(filteredList, 'SUBJ', 'SPA')" :randomValues="randomValues" :convertToRange="convertToRange"></SpaSci>
+        <SpaSci v-if="spasciList.length > 0" :spasciClasses="spasciList" :randomValues="randomValues" :convertToRange="convertToRange"></SpaSci>
       </div>
       <div class="stats">
-        <Stats :statsClasses="filterList(filteredList, 'SUBJ', 'ST')" :randomValues="randomValues" :convertToRange="convertToRange"></Stats>
+        <Stats v-if="statsList.length > 0" :statsClasses="statsList" :randomValues="randomValues" :convertToRange="convertToRange"></Stats>
       </div>
       <div class="theatre">
-        <Theatre :theatreClasses="filterList(filteredList, 'SUBJ', 'TH')" :randomValues="randomValues" :convertToRange="convertToRange"></Theatre>
+        <Theatre v-if="theatreList.length > 0" :theatreClasses="theatreList" :randomValues="randomValues" :convertToRange="convertToRange"></Theatre>
       </div>
       <div class="visit">
-        <Visit :visitClasses="filterList(filteredList, 'SUBJ', 'VS')" :randomValues="randomValues" :convertToRange="convertToRange"></Visit>
+        <Visit v-if="visitList.length > 0" :visitClasses="visitList" :randomValues="randomValues" :convertToRange="convertToRange"></Visit>
       </div>
       <div class="womengender">
-        <WomenGender :womengenderClasses="filterList(filteredList, 'SUBJ', 'WGS')" :randomValues="randomValues" :convertToRange="convertToRange"></WomenGender>
+        <WomenGender v-if="womengenderList.length > 0" :womengenderClasses="womengenderList" :randomValues="randomValues" :convertToRange="convertToRange"></WomenGender>
       </div>
       <div class="worldlang">
-        <WorldLang :worldlangClasses="filterList(filteredList, 'SUBJ', 'WLC')" :randomValues="randomValues" :convertToRange="convertToRange"></WorldLang>
+        <WorldLang v-if="worldlangList.length > 0" :worldlangClasses="worldlangList" :randomValues="randomValues" :convertToRange="convertToRange"></WorldLang>
       </div>
 	  </div>
 	</div>
@@ -363,70 +363,6 @@
         search: '',
         instructor: '',
         selectedFilters: [],
-        subjects: [
-        {id: 'ACC', classname: 'Accounting'},
-        {id: 'ARH', classname: 'Art History'},
-        {id: 'ARS', classname: 'Art Studio'},
-        {id: 'AST', classname: 'Astronomy'},
-        {id: 'ATS', classname: 'Atmospheric Science'},
-        {id: 'BLS', classname: 'Business Legal Studies'},
-        {id: 'BSE', classname: 'Biotechnology Science and Engineering'},
-        {id: 'BUS', classname: 'Business'},
-        {id: 'BYS', classname: 'Biological Sciences'},
-        {id: 'CE', classname: 'Civil Engineering'},
-        {id: 'CH', classname: 'Chemistry'},
-        {id: 'CHE', classname: 'Chemical Engineering'},
-        {id: 'CM', classname: 'Communication Arts'},
-        {id: 'CPE', classname: 'Computer Engineering'},
-        {id: 'CS', classname: 'Computer Science'},
-        {id: 'ECN', classname: 'Economics'},
-        {id: 'ED', classname: 'Education'},
-        {id: 'EDC', classname: 'Education Collaborative'},
-        {id: 'EE', classname: 'Electrical Engineering'},
-        {id: 'EH', classname: 'English'},
-        {id: 'EHL', classname: 'English Linguistics'},
-        {id: 'EM', classname: 'Engineering Management'},
-        {id: 'ENG', classname: 'Engineering'},
-        {id: 'ESS', classname: 'Earth System Science'},
-        {id: 'FIN', classname: 'Finance'},
-        {id: 'FYE', classname: 'First Year Experience'},
-        {id: 'GS', classname: 'Global Studies'},
-        {id: 'GY', classname: 'Geography'},
-        {id: 'HON', classname: 'Honors'},
-        {id: 'HPE', classname: 'Health and Physical Education'},
-        {id: 'HY', classname: 'History'},
-        {id: 'ILC', classname: 'Intensive Language and Culture'},
-        {id: 'IS', classname: 'Information Systems'},
-        {id: 'ISE', classname: 'Industrial & Systems Engineering '},
-        {id: 'KIN', classname: 'Kinesiology'},
-        {id: 'LLP', classname: 'Listeners License Program'},
-        {id: 'MA', classname: 'Math'},
-        {id: 'MAE', classname: 'Mechanical & Aerospace Engineering'},
-        {id: 'MGT', classname: 'Management'},
-        {id: 'MIL', classname: 'Military Science'},
-        {id: 'MKT', classname: 'Marketing'},
-        {id: 'MSC', classname: 'Art History'},
-        {id: 'MTS', classname: 'Materials Science'},
-        {id: 'MU', classname: 'Music'},
-        {id: 'MUA', classname: 'Music Applied'},
-        {id: 'MUJ', classname: 'Music Jazz'},
-        {id: 'MUX', classname: 'Music Ensembles'},
-        {id: 'NUR', classname: 'Nursing'},
-        {id: 'OCS', classname: 'Office Career Services'},
-        {id: 'OPE', classname: 'Optical Engineering'},
-        {id: 'PH', classname: 'Physics'},
-        {id: 'PHL', classname: 'Philosophy '},
-        {id: 'PRO', classname: 'Professional Studies'},
-        {id: 'PSC', classname: 'Political Science'},
-        {id: 'PY', classname: 'Psychology'},
-        {id: 'SOC', classname: 'Sociology'},
-        {id: 'SPA', classname: 'Space Science'},
-        {id: 'ST', classname: 'Statistics'},
-        {id: 'TH', classname: 'Theatre'},
-        {id: 'VS', classname: 'Visiting Student'},
-        {id: 'WGS', classname: 'Womens and Gender Studies'},
-        {id: 'WLC', classname: 'World Languages and Cultures '}
-        ]
       }
     },
 
@@ -446,6 +382,193 @@
           this.filteredList = newVal;
           }
         },*/
+        accList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'ACC');
+        },
+        arthistList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'ARH');
+        },
+        artstudList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'ARS');
+        },
+        astronomyList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'AST');
+        },
+        atsscienceList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'ATS');
+        },
+        buslegList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'BLS');
+        },
+        biosciengList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'BSE');
+        },
+        businessList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'BUS');
+        },
+        biosciList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'BYS');
+        },
+        civengList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'CE');
+        },
+        chemList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'CH');
+        },
+        chemengList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'CHE');
+        },
+        commartsList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'CM');
+        },
+        compengList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'CPE');
+        },
+        compsciList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'CS');
+        },
+        econList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'ECN');
+        },
+        educList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'ED');
+        },
+        educollabList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'EDC');
+        },
+        elecengList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'EE');
+        },
+        englList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'EH');
+        },
+        englingList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'EHL');
+        },
+        engmgmtList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'EM');
+        },
+        engineerList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'ENG');
+        },
+        earthsysList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'ESS');
+        },
+        financeList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'FIN');
+        },
+        firstyearList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'FYE');
+        },
+        globstudList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'GS');
+        },
+        geogList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'GY');
+        },
+        honorsList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'HON');
+        },
+        healthList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'HPE');
+        },
+        histList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'HY');
+        },
+        intlangList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'ILC');
+        },
+        infosysList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'IS');
+        },
+        indsysengList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'ISE');
+        },
+        kinesList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'KIN');
+        },
+        listlicList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'LLP');
+        },
+        matList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'MA');
+        },
+        mechaeroList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'MAE');
+        },
+        mgmtList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'MGT');
+        },
+        milsciList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'MIL');
+        },
+        marketList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'MKT');
+        },
+        mgmtsciList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'MSC');
+        },
+        matsciList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'MTS');
+        },
+        musicList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'MU');
+        },
+        musapplList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'MUA');
+        },
+        jazzList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'MUJ');
+        },
+        ensembleList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'MUX');
+        },
+        nursingList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'NUR');
+        },
+        offcarList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'OCS');
+        },
+        optengList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'OPE');
+        },
+        physList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'PH');
+        },
+        philList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'PHL');
+        },
+        profstudList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'PRO');
+        },
+        polsciList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'PSC');
+        },
+        psyList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'PY');
+        },
+        socList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'SOC');
+        },
+        spasciList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'SPA');
+        },
+        statsList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'ST');
+        },
+        theatreList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'TH');
+        },
+        visitList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'VS');
+        },
+        womengenderList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'WGS');
+        },
+        worldlangList: function() {
+          return this.filterList(this.filteredList, 'SUBJ', 'WLC');
+        },
+
         randomValues: function() {
                     var randomValues = {};
                     var dbRef = this.dbRef.slice();
@@ -506,11 +629,12 @@
           return newList
       	},
       	onClickChild (value) {
+        console.log(value)
       	  this.filteredList = this.dbRef.slice()
       	  var newList = []
-      	  for (var filter in Object.values(value)) {
-            if (value != "") {
-              newList.push(value);
+      	  for (var object in value) {
+            if (value[object] != "") {
+              newList.push(object + ": " + value[object]);
             }
       	  }
       	  this.selectedFilters = newList;

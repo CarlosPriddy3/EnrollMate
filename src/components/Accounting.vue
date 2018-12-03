@@ -13,7 +13,6 @@
     <v-expansion-panel-content :class="course.CURRENT_ENRL/course.MAX_ENRL >= .85 ? 'red lighten-4' : 'grey lighten-3'" v-for="course in accountingClasses" :key="course.id">
       <div slot="header"><i class="fas fa-fire" v-if="course.CURRENT_ENRL/course.MAX_ENRL >= .85" style="color: #FF5722;"></i>  {{ course.CRS_NUMB + " - " + course.TITLE + ", " + course.FIRST_NAME + " " + course.INSTRUCTOR + " (" + course.CURRENT_ENRL + "/" + course.MAX_ENRL + ")"}}
       </div>
-      <div>{{callDebug}}</div>
       <v-card-text class="grey lighten-5">
         <h2>{{course.TITLE}}</h2>
         <table>
@@ -159,9 +158,6 @@ export default {
             },
             closeModal() {
                 this.isModalVisible = false;
-            },
-            callDebug() {
-                console.log("Drawing");
             }
         },
 }
