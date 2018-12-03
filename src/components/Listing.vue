@@ -14,7 +14,7 @@
         Filters to be applied are: {{ selectedFilters }}
       </div>
       <div class="accounting">
-        <Accounting v-if="accList.length > 0" :accountingClasses="accList" :randomValues="randomValues" :convertToRange="convertToRange"></Accounting>
+        <Accounting v-if="accList.length > 0" :accountingClasses="accList" :randomValues="randomValues" :convertToRange="convertToRange" :linReg="linReg"></Accounting>
       </div>
       <div class="arthistory">
         <ArtHistory v-if="arthistList.length > 0" :arthistClasses="arthistList" :randomValues="randomValues" :convertToRange="convertToRange"></ArtHistory>
@@ -654,19 +654,42 @@
       	},
 
       	convertToRange: function(oldVal, curEnroll, course) {
-      	var newRange = 100
-      	var oldMin = Math.round(curEnroll * .75)
-      	var oldMax = Math.round(curEnroll * 1.25)
-      	var oldRange = oldMax - oldMin
-      	if (oldRange == 0 || curEnroll == 0) {
-      	  oldRange = 1
-      	}
-      	var newVal =  (Math.round((((oldVal - oldMin) * newRange) / oldRange)) + 50)
-      	if (curEnroll == 51) {
-      	  //console.log(newVal + course.TITLE)
-      	}
-      	return newVal
-      	}
+        	var newRange = 100
+        	var oldMin = Math.round(curEnroll * .75)
+        	var oldMax = Math.round(curEnroll * 1.25)
+        	var oldRange = oldMax - oldMin
+        	if (oldRange == 0 || curEnroll == 0) {
+        	  oldRange = 1
+        	}
+        	var newVal =  (Math.round((((oldVal - oldMin) * newRange) / oldRange)) + 50)
+        	if (curEnroll == 51) {
+        	  //console.log(newVal + course.TITLE)
+        	}
+        	return newVal
+      	},
+
+        linReg: function(xyVals, beginning) {
+          var sumY = 0
+          var sumX = 0
+          var sumXSq = 0
+          var sumXY = 0
+          var numElem = 0
+          for (var xyVal in xyVals) {
+              var x = xyVals[xyVal].x
+              var y = xyVals[xyVal].y
+              console.log(x)
+              console.log(y)
+              sumY += y
+              sumX += x
+              sumXY += (x * y)
+              sumXSq = (x * x)
+              numElem +=1
+          }
+          var a = (((sumY * sumXSq) - (sumX * sumXY)) / ((numElem * sumXSq) - (sumX * sumX)))
+          var b = (((numElem * sumXY) - (sumX * sumY)) / ((numElem * sumXSq) - (sumX * sumX)))
+
+          return {end: (a + (b * 7)), beginning: (a + (b * beginning))}
+        }
     }
   };
 

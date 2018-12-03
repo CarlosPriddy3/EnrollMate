@@ -115,6 +115,7 @@
                       <text x="395" y="200">SPR 2018</text>
                       <text x="478" y="200">SMR 2018</text>
                       <text x="561" y="200">FALL 2018</text>
+                      <text x="644" y="200">Average 2019</text>
                       <text x="300" y="240" class="label-title">Semester</text>
                     </g>
                     <g class="labels y-labels">
@@ -130,9 +131,10 @@
                       <circle cx="415" :cy="200 - convertToRange(randomValues[Object.values(course)[22]][3], course.CURRENT_ENRL, course)" data-value="6.8" r="4"></circle>
                       <circle cx="498" :cy="200 - convertToRange(randomValues[Object.values(course)[22]][4], course.CURRENT_ENRL, course)" data-value="6.7" r="4"></circle>
                       <circle cx="581" :cy="200 - convertToRange(course.CURRENT_ENRL, course.CURRENT_ENRL, course)" data-value="6.7" r="4"></circle>
+                      <circle cx="664" :cy="200 - convertToRange((localLinReg(course, 1).end), course.CURRENT_ENRL, course)" data-value="6.7" r="4"></circle>
                     </g>
-                    <svg height="210" width="500">
-                      <line x1="0" y1="0" x2="500" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
+                    <svg height="210" width="800">
+                      <line x1="166" :y1="200 - convertToRange(localLinReg(course, 1).beginning, course.CURRENT_ENRL, course)" x2="664" :y2="200 - convertToRange(localLinReg(course, 2017).end, course.CURRENT_ENRL, course)" style="stroke:rgb(255,0,0);stroke-width:2" />
                     </svg>
                   </svg>
                 </figure>
@@ -148,7 +150,7 @@
 import modal from './Modal'
 export default {
         name: 'accounting',
-        props: ['accountingClasses', 'randomValues', 'convertToRange'],
+        props: ['accountingClasses', 'randomValues', 'convertToRange', 'linReg'],
         components: {
           modal,
         },
@@ -159,6 +161,12 @@ export default {
                 sound: true,
                 widgets: false,
             }
+        },
+        methods: {
+          localLinReg: function(course, beginning) {
+              var xyVals = {Y1: {x: 1, y: this.randomValues[Object.values(course)[22]][0]}, Y2: {x: 2, y: this.randomValues[Object.values(course)[22]][1]}, Y3: {x: 3, y: this.randomValues[Object.values(course)[22]][2]}, Y4: {x: 4, y: this.randomValues[Object.values(course)[22]][3]}, Y5: {x: 5, y: this.randomValues[Object.values(course)[22]][3]}, Y6: {x: 6, y: course.CURRENT_ENRL}}
+              return(this.linReg(xyVals, beginning))
+          }
         }
 }
 </script>

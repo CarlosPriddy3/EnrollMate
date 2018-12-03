@@ -131,9 +131,9 @@
                       <circle cx="498" :cy="200 - convertToRange(randomValues[Object.values(course)[22]][4], course.CURRENT_ENRL, course)" data-value="6.7" r="4"></circle>
                       <circle cx="581" :cy="200 - convertToRange(course.CURRENT_ENRL, course.CURRENT_ENRL, course)" data-value="6.7" r="4"></circle>
                     </g>
-                    <svg height="210" width="500">
+                    <!-- <svg height="210" width="500">
                       <line x1="0" y1="0" x2="500" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
-                    </svg>
+                    </svg> -->
                   </svg>
                 </figure>
               </v-card-text>
