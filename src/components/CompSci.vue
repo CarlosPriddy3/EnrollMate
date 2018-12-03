@@ -1,19 +1,18 @@
 <template>
-  <div class="Accounting" id="accounting">
+  <div class="CompSci" id="business">
     <button
       type="button"
       class="btn"
     @click="showModal">
-    Accounting
+    Computer Science
   </button>
     <modal v-show="isModalVisible" @close="closeModal">
-    <h3 slot="header"> Accounting </h3>
+    <h3 slot="header"> Computer Science </h3>
     <p slot="body">
     <v-expansion-panel expand>
-    <v-expansion-panel-content :class="course.CURRENT_ENRL/course.MAX_ENRL >= .85 ? 'red lighten-4' : 'grey lighten-3'" v-for="course in accountingClasses" :key="course.id">
+    <v-expansion-panel-content :class="course.CURRENT_ENRL/course.MAX_ENRL >= .85 ? 'red lighten-4' : 'grey lighten-3'" v-for="course in compsciClasses" :key="course.id">
       <div slot="header"><i class="fas fa-fire" v-if="course.CURRENT_ENRL/course.MAX_ENRL >= .85" style="color: #FF5722;"></i>  {{ course.CRS_NUMB + " - " + course.TITLE + ", " + course.FIRST_NAME + " " + course.INSTRUCTOR + " (" + course.CURRENT_ENRL + "/" + course.MAX_ENRL + ")"}}
       </div>
-      <div>{{callDebug}}</div>
       <v-card-text class="grey lighten-5">
         <h2>{{course.TITLE}}</h2>
         <table>
@@ -143,8 +142,8 @@
 <script>
 import modal from './Modal'
 export default {
-        name: 'accounting',
-        props: ['accountingClasses', 'randomValues', 'convertToRange'],
+        name: 'compsci',
+        props: ['compsciClasses', 'randomValues', 'convertToRange'],
         components: {
           modal,
         },
@@ -159,9 +158,6 @@ export default {
             },
             closeModal() {
                 this.isModalVisible = false;
-            },
-            callDebug() {
-                console.log("Drawing");
             }
         },
 }
